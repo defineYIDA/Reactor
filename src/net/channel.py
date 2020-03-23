@@ -1,5 +1,6 @@
 # encoding=utf8
 
+
 class Channel(object):
     """
     对socket的封装
@@ -24,13 +25,13 @@ class Channel(object):
         """
         添加到poll的map中进行轮询
         """
-        pass
+        self._loop.update_channel(self)
 
     def close(self):
         """
         移除当前channel从轮询器中
         """
-        pass
+        self._loop.remove_channel(self)
 
     def disable(self):
         """

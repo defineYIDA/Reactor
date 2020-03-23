@@ -1,7 +1,7 @@
 # encoding=utf8
 
 import select
-import errno
+import error
 
 
 class Poller(object):
@@ -58,7 +58,7 @@ class SelectPoller(Poller):
             rlist, wlist, xlist = select.select(rlist, wlist, xlist, timeout)
 
         except select.error, e:
-            if e.args[0] == errno.EINTR:
+            if e.args[0] == error.EINTR:
                 # 阻塞中断，因为会出现对wakeup的支持
                 return active_list
             else:
@@ -83,3 +83,6 @@ class SelectPoller(Poller):
                 active_list.append(channel_active)
 
         return active_list
+
+
+Poller = SelectPoller
