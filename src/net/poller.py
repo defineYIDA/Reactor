@@ -80,7 +80,7 @@ class SelectPoller(Poller):
 
         for efd in xlist:
             channel_ins = self.channel_map[efd]
-            channel_ins.err = True
+            channel_ins.error = True
             active_list.append(channel_ins)
 
         return active_list

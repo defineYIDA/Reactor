@@ -14,6 +14,7 @@ class Channel(object):
         self.need_read = False
         self.writable = False
         self.readable = False
+        self.error = False
 
         self.is_accept = False  # is listen socket
 
@@ -60,5 +61,5 @@ class Channel(object):
         if self.writable and self.write_callback:
             self.write_callback()
 
-        if self.error_callback:
+        if self.error and self.error_callback:
             self.error_callback()

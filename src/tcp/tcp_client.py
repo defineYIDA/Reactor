@@ -33,6 +33,12 @@ class TcpClient(object):
         self.tcp_conn.set_message_callback(self.on_message)
         self.tcp_conn.set_write_complete_callback(self.write_complete)
 
+    def send(self, data):
+        if self.tcp_conn:
+            self.tcp_conn.send(data)
+        else:
+            print '连接建立失败不能发送消息'
+
     def on_message(self, tcp_connection, buffer):
         """
         消息到来

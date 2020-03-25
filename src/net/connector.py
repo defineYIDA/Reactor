@@ -54,17 +54,17 @@ class Connector(object):
             # 从poller的map中删除
             self.conn_channel.close()
             self.new_conn_callback(self.socket.sock, peer_addr)
+            print '连接：' + str(peer_addr) + '成功！'
 
         else:
             # 连接建立失败
             self.handle_error()
 
     def handle_error(self):
-        #self.conn_channel.disable()
-        # # 从poller的map中删除
-        # self.conn_channel.close()
-        # print '连接：' + str(self.dst_addr) + '失败！'
-        pass
+        self.conn_channel.disable()
+        # 从poller的map中删除
+        self.conn_channel.close()
+        print '连接：' + str(self.dst_addr) + '失败！'
 
     def set_new_conn_callback(self, method):
         self.new_conn_callback = method

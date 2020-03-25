@@ -16,7 +16,7 @@ class TestClient(tcp_client.TcpClient):
 def send(tcp_client):
     import time
     time.sleep(2)
-    tcp_client.tcp_conn.send("........")
+    tcp_client.send("........")
 
 
 if __name__ == '__main__':
