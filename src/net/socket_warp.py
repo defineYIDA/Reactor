@@ -42,9 +42,9 @@ class ServerSocket(Socket):
     server socket
     """
 
-    def bind_and_listen(self, host_addr):
+    def bind_and_listen(self, host_addr, backlog=socket.SOMAXCONN):
         self.sock.bind(host_addr)
-        self.sock.listen(socket.SOMAXCONN)  # set backlog 最终值由该参数和系统共同决定
+        self.sock.listen(backlog)  # set backlog 最终值由该参数和系统共同决定
 
     def accept(self):
         """

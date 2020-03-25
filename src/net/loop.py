@@ -14,7 +14,7 @@ class EventLoop(object):
     def __init__(self, timeout):
         self._poller = poller.Poller()  # 根据环境选择支持的poller
         self._timer_queue = timer  # TODO 定时器
-        self.waker = waker.waker()  # TODO 用来唤醒poller，不同的环境支持不同
+        self.waker = waker.waker()
 
         self.is_running = False
         self._timeout = timeout  # 轮询的阻塞时间
