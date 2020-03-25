@@ -41,7 +41,6 @@ class TcpConnection(object):
         self.write_complete_callback = None
         self.close_callback = None
 
-
     @loop_decorator.RunInLoop
     def send(self, data):
         # 发送数据（主动调用），不一定能发送完

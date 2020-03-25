@@ -3,12 +3,13 @@
 import socket
 import error
 
+
 class Socket(object):
     """
     socket的包装
     """
 
-    def __init__(self, conn_socket = None):
+    def __init__(self, conn_socket=None):
         if conn_socket:
             self.sock = conn_socket
         else:
@@ -69,6 +70,7 @@ class ClientSocket(Socket):
     """
     client socket
     """
+
     def connect(self, dst_addr):
         """
         conn to server
@@ -95,15 +97,15 @@ class ClientSocket(Socket):
         """
         is_close = False
         try:
-            l = self.sock.send(data)
-            return l, is_close
+            sent_count = self.sock.send(data)
+            return sent_count, is_close
 
         except socket.error, e:
             if e.args[0] in error.SHOULDCONTINUE:
                 return 0, is_close
             elif e.args[0] in error.DISCONNECTED:
-                if_close = True
-                return 0, if_close
+                is_close = True
+                return 0, is_close
             else:
                 raise
 

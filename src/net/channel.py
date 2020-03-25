@@ -5,6 +5,7 @@ class Channel(object):
     """
     对socket的封装
     """
+
     def __init__(self, loop, fd):
         self._loop = loop
         self.fd = fd
@@ -19,7 +20,6 @@ class Channel(object):
         self.read_callback = None
         self.write_callback = None
         self.error_callback = None
-
 
     def add_loop(self):
         """

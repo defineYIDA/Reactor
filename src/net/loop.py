@@ -16,7 +16,7 @@ class EventLoop(object):
         self._timer_queue = timer  # TODO 定时器
         self.waker = waker.waker()  # TODO 用来唤醒poller，不同的环境支持不同
 
-        self._is_running = False
+        self.is_running = False
         self._timeout = timeout  # 轮询的阻塞时间
         self._thread_id = threading.currentThread()  # 当前线程id
 
@@ -51,14 +51,14 @@ class EventLoop(object):
             # 创建线程才能执行
             return
 
-        while self._is_running:
+        while self.is_running:
             active_list = self._poller.poll(self._timeout)
 
             for channel in active_list:
                 # 执行就绪回调
                 channel.handle_event()
             # 处理计时任务
-            self._timer_queue  # TODO
+            #self._timer_queue  # TODO
             # 执行队列中的事件
             self.excute_event_fun()
 
