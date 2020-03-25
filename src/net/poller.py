@@ -55,6 +55,8 @@ class SelectPoller(Poller):
             return active_list
 
         try:
+            import time
+            s = time.time()
             rlist, wlist, xlist = select.select(rlist, wlist, xlist, timeout)
 
         except select.error, e:
@@ -64,7 +66,7 @@ class SelectPoller(Poller):
             else:
                 print e.message
                 raise
-
+        print 'time:' + str(time.time() - s)
         if rlist:
             active_list.extend(self._add_to_active(rlist))
         if wlist:
