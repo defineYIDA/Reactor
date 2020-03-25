@@ -16,7 +16,7 @@ class RunInLoop(object):
     def __get__(self, instance, owner):
         if instance and '_loop' in instance.__dict__:
             self.calle_ins = instance
-            self._loop = instance.loop
+            self._loop = instance._loop
 
         else:
             # func的类中没有loop，报错

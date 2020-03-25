@@ -12,9 +12,9 @@ class EventLoop(object):
     """
 
     def __init__(self, timeout):
-        self._poller = poller.Poller()  # 根据环境选择支持的poller
+        self._poller = poller.poller()  # 根据环境选择支持的poller
         self._timer_queue = timer  # TODO 定时器
-        self.waker = waker.waker()
+        self.waker = waker.waker(self)
 
         self.is_running = False
         self._timeout = timeout  # 轮询的阻塞时间

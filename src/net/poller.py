@@ -2,6 +2,7 @@
 
 import select
 import error
+import platform
 
 
 class Poller(object):
@@ -67,24 +68,27 @@ class SelectPoller(Poller):
                 print e.message
                 raise
         print 'time:' + str(time.time() - s)
-        if rlist:
-            active_list.extend(self._add_to_active(rlist))
-        if wlist:
-            active_list.extend(self._add_to_active(wlist))
-        if xlist:
-            active_list.extend(self._add_to_active(xlist))
+        for rfd in rlist:
+            channel_ins = self.channel_map[rfd]
+            channel_ins.readable = True
+            active_list.append(channel_ins)
+
+        for wfd in wlist:
+            channel_ins = self.channel_map[wfd]
+            channel_ins.writable = True
+            active_list.append(channel_ins)
+
+        for efd in xlist:
+            channel_ins = self.channel_map[efd]
+            channel_ins.err = True
+            active_list.append(channel_ins)
 
         return active_list
 
-    def _add_to_active(self, list):
-        active_list = []
-        for fd in list:
-            channel_active = self.channel_map[fd]
-            if channel_active:
-                channel_active.readable = True
-                active_list.append(channel_active)
 
-        return active_list
-
-
-Poller = SelectPoller
+poller = None
+if platform.system() == 'Windows':
+    poller = SelectPoller
+else:
+    # TODO 不同环境下对其他复用函数的支持
+    poller = SelectPoller
