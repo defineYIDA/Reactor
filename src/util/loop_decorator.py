@@ -26,7 +26,7 @@ class RunInLoop(object):
     def __call__(self, *args, **kwargs):
         if self._loop.local_thread():
             # 在主线程中
-            self.func(self.calle_ins, args, kwargs)
+            self.func(self.calle_ins, *args, **kwargs)
         else:
             # 不在主线程中，添加到事件队列，例如业务线程执行一个send
             self._loop.add_event_fun((self.func, self.calle_ins, args, kwargs))

@@ -21,10 +21,11 @@ def test(waker):
 
 
 if __name__ == '__main__':
-    import waker, thread, time
+    import waker, thread, time, timer
 
     server_ins = TestServer(('', 8080), time_out=10)
     # waker = waker.SocketWaker(server_ins.loop)
     waker = waker.waker(server_ins.loop)
-    thread.start_new_thread(test, (waker,))
+    # thread.start_new_thread(test, (waker,))
+    server_ins.loop.add_timer(timer.Timer(0, waker.wake_up))
     server_ins.run()

@@ -13,8 +13,8 @@ class EventLoop(object):
 
     def __init__(self, timeout):
         self._poller = poller.poller()  # 根据环境选择支持的poller
-        self._timer_queue = timer  # TODO 定时器
-        self.waker = waker.waker(self)
+        self._timer_queue = timer.TimerQueue(self)  # 定时器
+        self._waker = waker.waker(self)
 
         self.is_running = False
         self._timeout = timeout  # 轮询的阻塞时间
@@ -33,7 +33,7 @@ class EventLoop(object):
 
         if not self.local_thread() or self.is_excuting_event:
             # 当其他线程添加事件时唤醒poler
-            self.waker.wake_up()  # 唤醒poller
+            self._waker.wake_up()  # 唤醒poller
 
     def excute_event_fun(self):
         self.is_excuting_event = True
@@ -57,14 +57,21 @@ class EventLoop(object):
             for channel in active_list:
                 # 执行就绪回调
                 channel.handle_event()
+
             # 处理计时任务
-            #self._timer_queue  # TODO
+            self._timer_queue.schedule()
+
             # 执行队列中的事件
             self.excute_event_fun()
-
 
     def update_channel(self, channel):
         self._poller.update_channel(channel)
 
     def remove_channel(self, channel):
         self._poller.remove_channel(channel)
+
+    def add_timer(self, timer):
+        self._timer_queue.add_timer(timer)
+
+    def remove_timer(self, timer_id):
+        self._timer_queue.remove_timer(timer_id)
