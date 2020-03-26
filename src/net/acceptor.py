@@ -32,6 +32,7 @@ class Acceptor(object):
         conn_socket = None
         peer_host = None
         conn_socket, peer_host = self.socket.accept()
+        print "new conn" + str(peer_host)
 
         if self.new_connection_callback and conn_socket is not None and peer_host is not None:
             self.new_connection_callback(conn_socket, peer_host)

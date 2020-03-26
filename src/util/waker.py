@@ -1,7 +1,7 @@
 # encoding=utf8
 
 
-class waker(object):
+class Waker(object):
     """
     唤醒阻塞的poller（阻塞的IO复用函数）
     """
@@ -15,7 +15,7 @@ class waker(object):
         raise NotImplementedError
 
 
-class SocketWaker(waker):
+class SocketWaker(Waker):
     """
     using a pair of sockets rather than pipes
     """
@@ -45,14 +45,13 @@ class SocketWaker(waker):
         Send a byte to my connection.
         """
         self.w.send('p')
-        print 'wakeup'
-        pass
+        print 'wake_up'
 
     def handle_read(self):
         self.r.recv(1)
 
 
-class PipeWaker(waker):
+class PipeWaker(Waker):
     """
     self-pipe trick
     """
@@ -81,3 +80,10 @@ class PipeWaker(waker):
         if not recv_chr == self.chr:
             pass
 
+import platform
+
+waker = None
+if platform.system() == 'Windows':
+    waker = SocketWaker
+else:
+    waker = PipeWaker

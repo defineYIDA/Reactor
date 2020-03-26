@@ -15,7 +15,7 @@ class Socket(object):
         else:
             self.sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
-        self.sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)  # 地址复用,解决因为tcp time_wait 导致的服务器监听无法快速重启
+        # self.sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)  # 地址复用,解决因为tcp time_wait 导致的服务器监听无法快速重启
         self.sock.setsockopt(socket.SOL_SOCKET, socket.SO_KEEPALIVE, 1)  # TCP keep alive 保活
         self.sock.setsockopt(socket.IPPROTO_TCP, socket.TCP_NODELAY, 0)  # 关闭tcp nagle 机制,提高实时性
 
