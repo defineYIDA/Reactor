@@ -39,7 +39,7 @@ class TcpClient(object):
         else:
             print '连接建立失败不能发送消息'
 
-    def on_message(self, tcp_connection, buffer):
+    def on_message(self, tcp_connection, command, packet):
         """
         消息到来
         """

@@ -1,12 +1,13 @@
 # encoding=utf8
 
 import tcp_client
+import message_packet
 
 
 class TestClient(tcp_client.TcpClient):
-    def on_message(self, tcp_connection, buffer):
-        print buffer.get_all()
-        pass
+    def on_message(self, tcp_connection, command, packet):
+        print packet.get_command()
+        print packet.get_message()
 
     def write_complete(self):
         print 'client write done!'
@@ -16,7 +17,8 @@ class TestClient(tcp_client.TcpClient):
 def send(tcp_client):
     import time
     time.sleep(2)
-    tcp_client.send("........")
+    msg = message_packet.MessagePacket("hello!!!")
+    tcp_client.send(msg)
 
 
 if __name__ == '__main__':

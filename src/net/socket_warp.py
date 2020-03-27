@@ -45,6 +45,7 @@ class ServerSocket(Socket):
     def bind_and_listen(self, host_addr, backlog=socket.SOMAXCONN):
         self.sock.bind(host_addr)
         self.sock.listen(backlog)  # set backlog 最终值由该参数和系统共同决定
+        print "Listen:" + str(host_addr) + "successful !"
 
     def accept(self):
         """
