@@ -41,7 +41,7 @@ class TcpServer(object):
             return
         del self.conn_map[conn_key]
 
-    def on_message(self, tcp_connection, buffer):
+    def on_message(self, tcp_connection, command, packet):
         """
         消息到来
         """

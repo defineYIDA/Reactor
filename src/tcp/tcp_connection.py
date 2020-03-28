@@ -45,6 +45,10 @@ class TcpConnection(object):
     def send(self, data):
         # 发送数据（主动调用），不一定能发送完
         # 1）客户端往服务端发送消息；2）服务端消息分发
+        import codec
+        encode = codec.Protocol_Codec()  # 自定义协议的编解码器
+        data = encode.encode(data)  # 编码
+
         sent_count, is_close = self.socket.send(data)
         if is_close:
             self.handle_close()
@@ -71,15 +75,25 @@ class TcpConnection(object):
         """
         读就绪回调
         """
+        import codec
+
         recv_data, is_close = self.socket.recv(65535)
         if is_close:
             self.handle_close()
+            return
 
         self.read_buffer.append(recv_data)
 
-        if self.message_callback:
-            # 消息就绪回调
-            self.message_callback(self, self.read_buffer)
+        codec = codec.Protocol_Codec()  # 自定义协议编解码器
+
+        while True:
+            command, packet = codec.decode(self.read_buffer)
+
+            if not command and not packet:
+                break
+            if self.message_callback:
+                # 消息就绪回调
+                self.message_callback(self, command, packet)
 
     def handle_write(self):
         """
@@ -116,7 +130,6 @@ class TcpConnection(object):
             self.close_callback(self)
 
         self.channel.close()  # 将channel从poller中移除
-
 
     def set_close_callback(self, method):
         # connection_map中移除tcp_conn

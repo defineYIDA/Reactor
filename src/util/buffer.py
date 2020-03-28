@@ -44,10 +44,7 @@ class Buffer(object):
 
         self._buf.seek(self.read_index, 0)
         buff = self._buf.read(real_size)
-        self.read_index += real_size
-
-        if self.read_index == self.write_index and self.write_index > self._max_size:
-            self.reset()
+        self._buf.seek(self.read_index, 0)  # 恢复
 
         return buff
 
@@ -59,6 +56,10 @@ class Buffer(object):
         return self._buf.read()
 
     def add_read_index(self, count):
+        """
+        改变read_index，在read的时候恢复read指针，在这里统一改变
+        解决消息粘包到达时的丢失
+        """
         self.read_index += count
         if self.read_index > self.write_index:
             self.read_index = self.write_index
