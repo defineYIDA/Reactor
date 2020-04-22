@@ -26,3 +26,7 @@ pip-wheel-metadata/
 *.iws
 .idea/
 out/
+
+# log
+src/util/log
+test/log
