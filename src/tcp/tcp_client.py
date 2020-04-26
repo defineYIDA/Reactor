@@ -7,10 +7,12 @@ class TcpClient(object):
     """
 
     def __init__(self, timeout):
-        import connector, loop
-        self.loop = loop.EventLoop(timeout)
+        import connector, loop, logger
+
+        self._logger = logger.Logger()  # 日志服务，每一个线程一个
+        self.loop = loop.EventLoop(timeout, self._logger)
         self.tcp_conn = None
-        self.connector = connector.Connector(self.loop)
+        self.connector = connector.Connector(self.loop, self._logger)
         self.connector.set_new_conn_callback(self.new_connection)
 
     def run(self):
@@ -28,7 +30,7 @@ class TcpClient(object):
         import tcp_connection, time
         # client连接成功时调用
         conn_key = '{}#{}#{}'.format(str(conn_socket.getsockname()), str(peer_addr), str(time.time()))
-        self.tcp_conn = tcp_connection.TcpConnection(self.loop, conn_socket, conn_key)
+        self.tcp_conn = tcp_connection.TcpConnection(self.loop, conn_socket, conn_key, self._logger)
 
         self.tcp_conn.set_message_callback(self.on_message)
         self.tcp_conn.set_write_complete_callback(self.write_complete)
@@ -37,7 +39,7 @@ class TcpClient(object):
         if self.tcp_conn:
             self.tcp_conn.send(data)
         else:
-            print '连接建立失败不能发送消息'
+            self._logger.write_log('连接建立失败不能发送消息', 'error')
 
     def on_message(self, tcp_connection, command, packet):
         """

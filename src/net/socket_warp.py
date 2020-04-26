@@ -9,7 +9,9 @@ class Socket(object):
     socket的包装
     """
 
-    def __init__(self, conn_socket=None):
+    def __init__(self, logger, conn_socket=None):
+        self.logger = logger
+
         if conn_socket:
             self.sock = conn_socket
         else:
@@ -34,7 +36,7 @@ class Socket(object):
                 # error.EBADF: 描述符失效
                 return
             else:
-                raise
+                self.logger.write_log('socket close error', 'error')
 
 
 class ServerSocket(Socket):
@@ -45,7 +47,7 @@ class ServerSocket(Socket):
     def bind_and_listen(self, host_addr, backlog=socket.SOMAXCONN):
         self.sock.bind(host_addr)
         self.sock.listen(backlog)  # set backlog 最终值由该参数和系统共同决定
-        print "Listen:" + str(host_addr) + "successful !"
+        self.logger.write_log("Listen:" + str(host_addr) + "successful !", 'info')
 
     def accept(self):
         """
@@ -64,6 +66,7 @@ class ServerSocket(Socket):
                 # ECONNABORTED : 客户端发送了rst
                 return None, None
             else:
+                self.logger.write_log('socket accept error', 'error')
                 raise
 
 
@@ -90,6 +93,7 @@ class ClientSocket(Socket):
         elif ret in (0, error.EISCONN):
             return ConnectorState.CONNECTED
         else:
+            self.logger.write_log('socket connect error', 'error')
             return ConnectorState.ERROR
 
     def send(self, data):
@@ -108,6 +112,7 @@ class ClientSocket(Socket):
                 is_close = True
                 return 0, is_close
             else:
+                self.logger.write_log('socket send failed', 'error')
                 raise
 
     def recv(self, buffer_size):
@@ -126,6 +131,7 @@ class ClientSocket(Socket):
                 is_close = True
                 return '', is_close
             else:
+                self.logger.write_log('socket recv failed', 'error')
                 raise
 
     def get_peer_name(self):

@@ -11,8 +11,9 @@ class Poller(object):
     win不支持epoll，而select具有良好的平台兼容性
     """
 
-    def __init__(self):
+    def __init__(self, logger):
         self.channel_map = {}  # 需要监测的channel
+        self._logger = logger
 
     def poll(self, timeout):
         raise NotImplementedError

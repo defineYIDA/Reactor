@@ -15,10 +15,11 @@ class Connector(object):
     client socket的连接器
     """
 
-    def __init__(self, loop):
+    def __init__(self, loop, logger):
         import socket_warp, channel
         self._loop = loop
-        self.socket = socket_warp.ClientSocket()
+        self._logger = logger
+        self.socket = socket_warp.ClientSocket(self._logger)
         self.conn_channel = channel.Channel(loop, self.socket.fd)
         self.conn_channel.add_loop()
 
@@ -38,9 +39,9 @@ class Connector(object):
         elif conn_state == ConnectorState.CONNECTED:
             # 连接建立成功
             self.new_conn_callback(self.socket)
-            print '连接：' + str(dst_addr) + '成功！'
+            self._logger.write_log('连接：' + str(dst_addr) + '成功！', 'info')
         else:
-            print '连接：' + str(dst_addr) + '失败！'
+            self._logger.write_log('连接：' + str(dst_addr) + '失败！', 'error')
 
         return conn_state
 
@@ -54,7 +55,7 @@ class Connector(object):
             # 从poller的map中删除
             self.conn_channel.close()
             self.new_conn_callback(self.socket.sock, peer_addr)
-            print '连接：' + str(peer_addr) + '成功！'
+            self._logger.write_log('连接：' + str(peer_addr) + '成功！', 'info')
 
         else:
             # 连接建立失败
@@ -64,7 +65,7 @@ class Connector(object):
         self.conn_channel.disable()
         # 从poller的map中删除
         self.conn_channel.close()
-        print '连接：' + str(self.dst_addr) + '失败！'
+        self._logger.write_log('连接：' + str(self.dst_addr) + '失败！', 'error')
 
     def set_new_conn_callback(self, method):
         self.new_conn_callback = method

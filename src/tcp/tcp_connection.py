@@ -17,10 +17,11 @@ class TcpConnection(object):
     每一个client socket 对应一个tcp connection
     """
 
-    def __init__(self, loop, conn_socket, conn_key):
+    def __init__(self, loop, conn_socket, conn_key, logger):
         self._loop = loop
+        self._logger = logger
         self.conn_key = conn_key
-        self.socket = socket_warp.ClientSocket(conn_socket)
+        self.socket = socket_warp.ClientSocket(self._logger, conn_socket)
 
         self.channel = channel.Channel(loop, self.socket.fd)
         self.channel.add_loop()
@@ -120,7 +121,8 @@ class TcpConnection(object):
             self.output_buffer.add_read_index(sent_count)
 
     def handle_error(self):
-        pass
+        self._logger.write_log('connection error while fd is listened by poller','error')
+        self.handle_close()
 
     def handle_close(self):
         self.channel.disable()  # 关闭对channel的监听
@@ -130,6 +132,7 @@ class TcpConnection(object):
             self.close_callback(self)
 
         self.channel.close()  # 将channel从poller中移除
+        self.state = TcpConnectionState.DISCONNECTED
 
     def set_close_callback(self, method):
         # connection_map中移除tcp_conn
