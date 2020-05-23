@@ -102,9 +102,9 @@ class TimerQueue(object):
 
 
 if __name__ == '__main__':
-    import time, loop
+    import time, loop, logger
 
-    timer_queue = TimerQueue(loop.EventLoop(0.01))
+    timer_queue = TimerQueue(loop.EventLoop(0.01, logger.Logger()))
 
 
     def test_func():

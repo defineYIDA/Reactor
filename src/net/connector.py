@@ -50,7 +50,7 @@ class Connector(object):
         # 能够获得对端host，即代表连接建立成功
         peer_addr, is_success = self.socket.get_peer_name()
         if is_success:
-            # 关闭channel的全部监听，不同于accprtor会一直监听
+            # 关闭channel的全部监听，不同于acceptor会一直监听
             self.conn_channel.disable()
             # 从poller的map中删除
             self.conn_channel.close()

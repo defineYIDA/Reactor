@@ -28,7 +28,7 @@ class TcpServer(object):
 
     def new_connection(self, conn_socket, peer_host):
         """
-        accpet到新连接的回调函数
+        accept到新连接的回调函数
         """
         import time, tcp_connection
         conn_key = '{}#{}#{}'.format(str(self._host_addr), str(peer_host), str(time.time()))  # 四元组 + 时间戳

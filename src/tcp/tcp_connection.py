@@ -88,13 +88,19 @@ class TcpConnection(object):
         codec = codec.Protocol_Codec()  # 自定义协议编解码器
 
         while True:
-            command, packet = codec.decode(self.read_buffer)
+            try:
+                command, packet = codec.decode(self.read_buffer)
 
-            if not command and not packet:
+                if not command and not packet:
+                    break
+                if self.message_callback:
+                    # 消息就绪回调
+                    self.message_callback(self, command, packet)
+            except Exception, e:
+                #  解码异常，关闭客户端连接
+                self._logger.write_log(e.message, 'error')
+                self.handle_close()
                 break
-            if self.message_callback:
-                # 消息就绪回调
-                self.message_callback(self, command, packet)
 
     def handle_write(self):
         """

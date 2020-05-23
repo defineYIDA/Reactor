@@ -1,12 +1,13 @@
 # encoding=utf8
 
-import cPickle
+import json
 import struct
 from codec import Codec
 from protocol import Protocol
+from msg_base import MsgBase
 
 
-class PacketCodec(Codec, Protocol):
+class MsgCodec(Codec, Protocol):
     """
     自定义协议编解码器
     编解码方式：序列化
@@ -27,9 +28,9 @@ class PacketCodec(Codec, Protocol):
 
     @property
     def version(self):
-        return 1
+        return 2
 
-    def encode(self, packet):
+    def encode(self, msg):
         """
         自定义 packet 协议的编码
         +--------+----------+-------+--------+------------------+
@@ -37,14 +38,14 @@ class PacketCodec(Codec, Protocol):
         +-------+----------+-------+--------+------------------+
          4byte     4byte    4byte    4byte       N byte
         """
-        serialize_data = cPickle.dumps(packet)  # 序列化报文
+        json_data = json.dumps(msg.data)  # 序列化报文
 
         data = struct.pack(self._header_fmt, Protocol.MAGIC_NUMBER,
                            self.version,
-                           packet.get_command(),
-                           len(serialize_data))
+                           msg.get_command(),
+                           len(json_data))
 
-        return data + serialize_data
+        return data + json_data
 
     def decode(self, buffer):
         if not buffer or buffer.size < self._header_len:
@@ -69,12 +70,17 @@ class PacketCodec(Codec, Protocol):
 
         buffer.add_read_index(self._header_len)
 
-        packet = cPickle.loads(buffer.read(data_len))  # TODO 根据command，反序列化得到对应packet
         # print packet.get_command()
+
+        data = buffer.read(data_len).decode()
+        # print "data" + data
+
+        msg = MsgBase(command, json.loads(data))
 
         buffer.add_read_index(data_len)  # 更改read指针
 
-        return command, packet
+        return command, msg
+
 
 
 def _test(b, en):
@@ -89,38 +95,18 @@ def _test(b, en):
 
 
 if __name__ == '__main__':
-    import message_packet, buffer, thread
-    msg = message_packet.MessagePacket("hello!!!")
-    codec = PacketCodec()
-    en = codec.encode(msg)
+    import login_msg, buffer
+    msg = login_msg.LoginMsg(1, {
+      "id": "123",
+      "pwd": "admin",
+    })
+    codec = MsgCodec()
+    s = codec.encode(msg)
+
     b = buffer.Buffer()
-    b.append(en)
-    # 模拟粘包
-    msg1 = message_packet.MessagePacket("hello!!!")
-    en1 = codec.encode(msg)
-    b.append(en1[:10])
-    codec.decode(b)
-    b.append(en1[10:])
-    codec.decode(b)
+    b.append(s)
 
-    print "----------------粘包模拟-------------------------"
-    b.reset()
-    b.append('')  # 模拟包未接收完
-    # thread.start_new_thread(_test, (b, en))
-    en = en + en
-    i = 0
-    while i <= len(en):
-        command, packet = codec.decode(b)
-        if not packet:
-            print "没用一个完整的包"
-        else:
-            print command, packet.get_command()
+    command, login = codec.decode(b)
 
-        if i + 50 < len(en):
-            b.append(en[i:i + 50])
-            i += 50
-        elif i == len(en):
-            break
-        else:
-            b.append(en[i:])
-            i = len(en)
+    print login.get_command()
+    print str(login.data)
