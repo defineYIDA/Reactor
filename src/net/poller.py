@@ -68,7 +68,7 @@ class SelectPoller(Poller):
             else:
                 print e.message
                 raise
-        print 'time:' + str(time.time() - s)
+        # print 'time:' + str(time.time() - s)
         for rfd in rlist:
             channel_ins = self.channel_map[rfd]
             channel_ins.readable = True

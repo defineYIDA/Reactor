@@ -4,6 +4,7 @@ import loop_decorator
 import socket_warp
 import channel
 import buffer
+import time
 
 
 class TcpConnectionState(object):
@@ -42,14 +43,20 @@ class TcpConnection(object):
         self.write_complete_callback = None
         self.close_callback = None
 
+        # 上次接收到客户端心跳的时间
+        self.last_recv_heart_time = time.time()
+
     @loop_decorator.RunInLoop
     def send(self, data):
         # 发送数据（主动调用），不一定能发送完
         # 1）客户端往服务端发送消息；2）服务端消息分发
         import codec
-        encode = codec.Protocol_Codec()  # 自定义协议的编解码器
-        data = encode.encode(data)  # 编码
-
+        try:
+            encode = codec.Protocol_Codec()  # 自定义协议的编解码器
+            data = encode.encode(data)  # 编码
+        except Exception, e:
+            self._logger.write_log(e.message, 'error')
+            return
         sent_count, is_close = self.socket.send(data)
         if is_close:
             self.handle_close()
@@ -88,13 +95,19 @@ class TcpConnection(object):
         codec = codec.Protocol_Codec()  # 自定义协议编解码器
 
         while True:
-            command, packet = codec.decode(self.read_buffer)
+            try:
+                command, packet = codec.decode(self.read_buffer)
 
-            if not command and not packet:
+                if not command and not packet:
+                    break
+                if self.message_callback:
+                    # 消息就绪回调
+                    self.message_callback(self, command, packet)
+            except Exception, e:
+                #  解码异常，关闭客户端连接
+                self._logger.write_log(e.message, 'error')
+                self.handle_close()
                 break
-            if self.message_callback:
-                # 消息就绪回调
-                self.message_callback(self, command, packet)
 
     def handle_write(self):
         """
@@ -133,6 +146,7 @@ class TcpConnection(object):
 
         self.channel.close()  # 将channel从poller中移除
         self.state = TcpConnectionState.DISCONNECTED
+        self._logger.write_log('Client: ' + self.conn_key + ' close !', 'error')
 
     def set_close_callback(self, method):
         # connection_map中移除tcp_conn
