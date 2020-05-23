@@ -3,10 +3,11 @@
 import tcp_server
 from dispatcher import Dispatcher
 
+
 class GunsServer(tcp_server.TcpServer):
     def __init__(self):
         # 调用父类构造进行Server的初始化
-        super(GunsServer, self).__init__(('', 8080), time_out=10)
+        super(GunsServer, self).__init__(('', 8080), time_out=1)
 
         # 初始化调度器
         self._init_Dispatcher()
@@ -18,15 +19,17 @@ class GunsServer(tcp_server.TcpServer):
         Dispatcher.HandlerEvent(commend, tcp_connection, msg)
 
     def write_complete(self):
-        print 'server write done!'
-
+        print 'server write done!' + str(time.time())
 
     def _init_Dispatcher(self):
         """
         初始化
         """
+        # 客户端心跳
+        Dispatcher.RegisterHandler(0, self.client_heart_beat_handler)
         # 登陆消息
-        Dispatcher.RegisterHandler(1,self._login_handler)
+        Dispatcher.RegisterHandler(1, self._login_handler)
+
 
     def _login_handler(self, tcp_connection, msg):
         """
@@ -41,5 +44,7 @@ class GunsServer(tcp_server.TcpServer):
 
 if __name__ == '__main__':
     import waker, thread, time, timer
+
     server_ins = GunsServer()
+    server_ins.heart_beat()
     server_ins.run()

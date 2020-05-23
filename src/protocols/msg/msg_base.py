@@ -1,17 +1,15 @@
 # encoding=utf8
 
+from msg import Msg
 
-class MsgBase(object):
+class MsgBase(Msg):
     """
-    消息包协议
+    解码事用来初始化Msg协议包
     """
-    data = {}
 
     def __init__(self, command, data):
         if not data:
-            self.data = {
-                "id": "",
-            }
+            self.data = {}
         else:
             self.data = data
         self.command = command

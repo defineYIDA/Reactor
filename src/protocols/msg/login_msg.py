@@ -1,9 +1,9 @@
 # encoding=utf8
 
-from msg_base import MsgBase
+from msg import Msg
 
 
-class LoginMsg(MsgBase):
+class LoginMsg(Msg):
     """
     data:
     {
@@ -12,5 +12,8 @@ class LoginMsg(MsgBase):
     }
     """
 
+    def __init__(self, data):
+        self._data = data
+
     def get_command(self):
-        return self.command
+        return 1
