@@ -1,6 +1,7 @@
 # encoding=utf8
 
 from msg import Msg
+from command import Command
 
 
 class HeartBeatMsg(Msg):
@@ -11,4 +12,4 @@ class HeartBeatMsg(Msg):
         self.data = {}
 
     def get_command(self):
-        return 0
+        return Command.HEARTBEAT

@@ -95,8 +95,8 @@ def _test(b, en):
 
 
 if __name__ == '__main__':
-    import login_msg, buffer
-    msg = login_msg.LoginMsg(1, {
+    import login_req_msg, buffer
+    msg = login_req_msg.LoginReqMsg({
       "id": "123",
       "pwd": "admin",
     })

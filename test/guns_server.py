@@ -2,6 +2,7 @@
 
 import tcp_server
 from dispatcher import Dispatcher
+from command import Command
 
 
 class GunsServer(tcp_server.TcpServer):
@@ -26,20 +27,26 @@ class GunsServer(tcp_server.TcpServer):
         初始化
         """
         # 客户端心跳
-        Dispatcher.RegisterHandler(0, self.client_heart_beat_handler)
+        Dispatcher.RegisterHandler(Command.HEARTBEAT, self.client_heart_beat_handler)
         # 登陆消息
-        Dispatcher.RegisterHandler(1, self._login_handler)
-
+        Dispatcher.RegisterHandler(Command.LOGIN_REQUEST, self._login_handler)
 
     def _login_handler(self, tcp_connection, msg):
         """
         login msg的处理函数
         """
         print msg.get_command()
-        print str(msg.data)
         print msg.data['id']
         print msg.data['pwd']
-        tcp_connection.send(msg)
+
+        # 构建响应报文
+        from login_res_msg import LoginResMsg
+        res_msg = LoginResMsg({
+            "id": msg.data['id'],
+            "status": "true",
+            "msg": "login success"
+        })
+        tcp_connection.send(res_msg)
 
 
 if __name__ == '__main__':
