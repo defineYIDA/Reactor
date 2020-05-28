@@ -4,13 +4,13 @@ from msg import Msg
 from command import Command
 
 
-class LoginReqMsg(Msg):
+class GetSettingReqMsg(Msg):
     """
-    登陆请求报文
+    获得设置参数请求报文
     data:
     {
       "id": "",
-      "pwd": "",
+      "type": "",
     }
     """
 
@@ -18,4 +18,4 @@ class LoginReqMsg(Msg):
         self.data = data
 
     def get_command(self):
-        return Command.LOGIN_REQUEST
+        return Command.GET_SETTING_REQUEST
