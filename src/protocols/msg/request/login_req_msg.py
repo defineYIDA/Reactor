@@ -1,10 +1,12 @@
 # encoding=utf8
 
 from msg import Msg
+from command import Command
 
 
-class LoginMsg(Msg):
+class LoginReqMsg(Msg):
     """
+    登陆请求报文
     data:
     {
       "id": "",
@@ -13,7 +15,8 @@ class LoginMsg(Msg):
     """
 
     def __init__(self, data):
-        self._data = data
+        self.data = data
 
     def get_command(self):
-        return 1
+        return Command.LOGIN_REQUEST
+

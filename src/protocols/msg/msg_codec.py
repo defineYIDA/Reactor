@@ -2,6 +2,7 @@
 
 import json
 import struct
+import yaml
 from codec import Codec
 from protocol import Protocol
 from msg_base import MsgBase
@@ -32,7 +33,7 @@ class MsgCodec(Codec, Protocol):
 
     def encode(self, msg):
         """
-        自定义 packet 协议的编码
+        自定义 msg 协议的编码
         +--------+----------+-------+--------+------------------+
         | 魔数   | 协议版本  |  指令 | 数据长度 |     数据         |
         +-------+----------+-------+--------+------------------+
@@ -75,12 +76,11 @@ class MsgCodec(Codec, Protocol):
         data = buffer.read(data_len).decode()
         # print "data" + data
 
-        msg = MsgBase(command, json.loads(data))
+        msg = MsgBase(command, yaml.safe_load(data))
 
         buffer.add_read_index(data_len)  # 更改read指针
 
         return command, msg
-
 
 
 def _test(b, en):
@@ -95,10 +95,11 @@ def _test(b, en):
 
 
 if __name__ == '__main__':
-    import login_msg, buffer
-    msg = login_msg.LoginMsg(1, {
-      "id": "123",
-      "pwd": "admin",
+    import buffer
+    import get_setting_req_msg, setting
+
+    msg = get_setting_req_msg.GetSettingReqMsg({
+        "data": setting.PlayerSetting().dict,
     })
     codec = MsgCodec()
     s = codec.encode(msg)
@@ -108,5 +109,5 @@ if __name__ == '__main__':
 
     command, login = codec.decode(b)
 
-    print login.get_command()
+    print command
     print str(login.data)
