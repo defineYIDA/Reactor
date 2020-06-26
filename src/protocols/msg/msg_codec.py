@@ -2,7 +2,6 @@
 
 import json
 import struct
-import yaml
 from codec import Codec
 from protocol import Protocol
 from msg_base import MsgBase
@@ -76,7 +75,7 @@ class MsgCodec(Codec, Protocol):
         data = buffer.read(data_len).decode()
         # print "data" + data
 
-        msg = MsgBase(command, yaml.safe_load(data))
+        msg = MsgBase(command, json.loads(data))
 
         buffer.add_read_index(data_len)  # 更改read指针
 
