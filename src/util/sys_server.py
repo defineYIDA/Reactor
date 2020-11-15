@@ -6,8 +6,7 @@ class SystemServer(object):
     系统服务类，用于处理服务端和客户端的心跳和空闲检测
     """
 
-    def __init__(self, logger, loop):
-        self._logger = logger
+    def __init__(self, loop):
         self._loop = loop
 
         self._handler_map = {}  # {系统消息类型，处理函数}
@@ -17,7 +16,7 @@ class SystemServer(object):
     #     注册系统消息和对应的处理函数
     #     """
     #     if sys_msg_type in self._handler_map:
-    #         self._logger.write_log('sys_msg %d has been registered' % sys_msg_type,'error')
+    #         LOG.write_log('sys_msg %d has been registered' % sys_msg_type,'error')
     #     else:
     #         pass
 
@@ -25,7 +24,7 @@ class SystemServer(object):
         """
         注册一个timer
         """
-        import timer, time
+        import timer
         tme = timer.Timer(internal, func)
         self._loop.add_timer(tme)
         return tme.timer_id

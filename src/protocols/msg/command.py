@@ -27,3 +27,15 @@ class Command(object):
     EVENT_REQUEST = 9
     # 玩家事件请求响应
     EVENT_RESPONSE = 10
+    # 加入房间请求
+    JOIN_ROOM_REQUEST = 11
+    # 加入房间响应
+    JOIN_ROOM_RESPONSE = 12
+    # 上传玩家信息请求
+    PLAYER_INFO_REQUEST = 13
+    # 玩家信息响应
+    PLAYER_INFO_RESPONSE = 14
+    # 战斗信息变更请求
+    BATTLE_INFO_REQUEST = 15
+    # 战斗信息变更响应
+    BATTLE_INFO_RESPONSE = 16

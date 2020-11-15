@@ -18,11 +18,10 @@ class TcpConnection(object):
     每一个client socket 对应一个tcp connection
     """
 
-    def __init__(self, loop, conn_socket, conn_key, logger):
+    def __init__(self, loop, conn_socket, conn_key):
         self._loop = loop
-        self._logger = logger
         self.conn_key = conn_key
-        self.socket = socket_warp.ClientSocket(self._logger, conn_socket)
+        self.socket = socket_warp.ClientSocket(conn_socket)
 
         self.channel = channel.Channel(loop, self.socket.fd)
         self.channel.add_loop()
@@ -55,7 +54,7 @@ class TcpConnection(object):
             encode = codec.Protocol_Codec()  # 自定义协议的编解码器
             data = encode.encode(data)  # 编码
         except Exception, e:
-            self._logger.write_log(e.message, 'error')
+            LOG.error(e.message)
             return
         sent_count, is_close = self.socket.send(data)
         if is_close:
@@ -105,7 +104,7 @@ class TcpConnection(object):
                     self.message_callback(self, command, packet)
             except Exception, e:
                 #  解码异常，关闭客户端连接
-                self._logger.write_log(e.message, 'error')
+                LOG.error(e.message)
                 self.handle_close()
                 break
 
@@ -134,7 +133,7 @@ class TcpConnection(object):
             self.output_buffer.add_read_index(sent_count)
 
     def handle_error(self):
-        self._logger.write_log('connection error while fd is listened by poller','error')
+        LOG.error('connection error while fd is listened by poller')
         self.handle_close()
 
     def handle_close(self):
@@ -146,7 +145,7 @@ class TcpConnection(object):
 
         self.channel.close()  # 将channel从poller中移除
         self.state = TcpConnectionState.DISCONNECTED
-        self._logger.write_log('Client: ' + self.conn_key + ' close !', 'error')
+        LOG.error('Client: ' + self.conn_key + ' close !')
 
     def set_close_callback(self, method):
         # connection_map中移除tcp_conn

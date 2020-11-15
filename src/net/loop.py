@@ -11,11 +11,10 @@ class EventLoop(object):
     事件循环
     """
 
-    def __init__(self, timeout, logger):
-        self._logger = logger
-        self._poller = poller.poller(self._logger)  # 根据环境选择支持的poller
+    def __init__(self, timeout):
+        self._poller = poller.poller()  # 根据环境选择支持的poller
         self._timer_queue = timer.TimerQueue(self)  # 定时器
-        self._waker = waker.waker(self, self._logger)  # 对 wake up 的支持
+        self._waker = waker.waker(self)  # 对 wake up 的支持
 
         self.is_running = False
         self._timeout = timeout  # 轮询的阻塞时间

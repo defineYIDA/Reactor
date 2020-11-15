@@ -2,6 +2,7 @@
 
 from msg import Msg
 
+
 class MsgBase(Msg):
     """
     解码事用来初始化Msg协议包

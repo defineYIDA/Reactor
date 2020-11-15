@@ -9,9 +9,7 @@ class Socket(object):
     socket的包装
     """
 
-    def __init__(self, logger, conn_socket=None):
-        self.logger = logger
-
+    def __init__(self, conn_socket=None):
         if conn_socket:
             self.sock = conn_socket
         else:
@@ -36,7 +34,7 @@ class Socket(object):
                 # error.EBADF: 描述符失效
                 return
             else:
-                self.logger.write_log('socket close error', 'error')
+                LOG.error('socket close error')
 
 
 class ServerSocket(Socket):
@@ -47,7 +45,7 @@ class ServerSocket(Socket):
     def bind_and_listen(self, host_addr, backlog=socket.SOMAXCONN):
         self.sock.bind(host_addr)
         self.sock.listen(backlog)  # set backlog 最终值由该参数和系统共同决定
-        self.logger.write_log("Listen:" + str(host_addr) + "successful !", 'info')
+        LOG.info("Listen:" + str(host_addr) + "successful !")
 
     def accept(self):
         """
@@ -66,7 +64,7 @@ class ServerSocket(Socket):
                 # ECONNABORTED : 客户端发送了rst
                 return None, None
             else:
-                self.logger.write_log('socket accept error', 'error')
+                LOG.error('socket accept error')
                 raise
 
 
@@ -93,7 +91,7 @@ class ClientSocket(Socket):
         elif ret in (0, error.EISCONN):
             return ConnectorState.CONNECTED
         else:
-            self.logger.write_log('socket connect error', 'error')
+            LOG.error('socket connect error')
             return ConnectorState.ERROR
 
     def send(self, data):
@@ -112,7 +110,7 @@ class ClientSocket(Socket):
                 is_close = True
                 return 0, is_close
             else:
-                self.logger.write_log('socket send failed', 'error')
+                LOG.error('socket send failed')
                 raise
 
     def recv(self, buffer_size):
@@ -131,7 +129,7 @@ class ClientSocket(Socket):
                 is_close = True
                 return '', is_close
             else:
-                self.logger.write_log('socket recv failed', 'error')
+                LOG.error('socket recv failed')
                 raise
 
     def get_peer_name(self):

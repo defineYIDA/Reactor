@@ -20,10 +20,9 @@ class SocketWaker(Waker):
     using a pair of sockets rather than pipes
     """
 
-    def __init__(self, loop, logger):
+    def __init__(self, loop):
         import socket, channel
         self._loop = loop
-        self._logger = logger
         server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         client.setsockopt(socket.IPPROTO_TCP, socket.TCP_NODELAY, 1)
@@ -39,7 +38,6 @@ class SocketWaker(Waker):
         self.socket_channel.need_read = True
         self.socket_channel.set_read_callback(self.handle_read)
         self.socket_channel.add_loop()
-
 
     def wake_up(self):
         """
@@ -57,10 +55,9 @@ class PipeWaker(Waker):
     self-pipe trick
     """
 
-    def __init__(self, loop, logger):
+    def __init__(self, loop):
         import os, channel
         self._loop = loop
-        self._logger = logger
         self.rfd, self.wfd = os.pipe()
         # 监听pipe，win不支持 https://github.com/defineYIDA/Reactor/issues/1
         self.pipe_channel = channel.Channel(self._loop, self.rfd)
@@ -81,6 +78,7 @@ class PipeWaker(Waker):
         recv_chr = os.read(self.rfd, 1)
         if not recv_chr == self.chr:
             pass
+
 
 import platform
 
