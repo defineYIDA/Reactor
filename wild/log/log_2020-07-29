@@ -1,0 +1,47 @@
+2020-07-29 09:32:35,934	19904	INFO	E:\netease\zip\Project\wild\Server\src\net\socket_warp.py:50	Listen:('', 8080)successful !
+2020-07-29 09:33:16,671	19904	INFO	E:\netease\zip\Project\wild\Server\src\tcp\tcp_server.py:45	new conn('127.0.0.1', 51251)
+2020-07-29 09:33:47,779	19904	ERROR	E:\netease\zip\Project\wild\Server\src\tcp\tcp_connection.py:149	Client: ('', 8080)#('127.0.0.1', 51251)#1595986396.67 close !
+2020-07-29 09:34:09,105	19904	INFO	E:\netease\zip\Project\wild\Server\src\tcp\tcp_server.py:45	new conn('127.0.0.1', 51269)
+2020-07-29 09:34:34,051	19904	ERROR	E:\netease\zip\Project\wild\Server\src\tcp\tcp_connection.py:149	Client: ('', 8080)#('127.0.0.1', 51269)#1595986449.11 close !
+2020-07-29 09:34:45,963	19904	INFO	E:\netease\zip\Project\wild\Server\src\tcp\tcp_server.py:45	new conn('127.0.0.1', 51281)
+2020-07-29 09:35:04,979	19904	ERROR	E:\netease\zip\Project\wild\Server\src\tcp\tcp_connection.py:149	Client: ('', 8080)#('127.0.0.1', 51281)#1595986485.96 close !
+2020-07-29 09:57:39,016	21092	INFO	E:\netease\zip\Project\wild\Server\src\net\socket_warp.py:50	Listen:('', 8080)successful !
+2020-07-29 09:57:43,792	21092	INFO	E:\netease\zip\Project\wild\Server\src\tcp\tcp_server.py:45	new conn('127.0.0.1', 52983)
+2020-07-29 09:58:00,207	21092	ERROR	E:\netease\zip\Project\wild\Server\src\tcp\tcp_connection.py:149	Client: ('', 8080)#('127.0.0.1', 52983)#1595987863.79 close !
+2020-07-29 10:01:43,710	21092	INFO	E:\netease\zip\Project\wild\Server\src\tcp\tcp_server.py:45	new conn('127.0.0.1', 53046)
+2020-07-29 10:02:00,457	21092	ERROR	E:\netease\zip\Project\wild\Server\src\tcp\tcp_connection.py:149	Client: ('', 8080)#('127.0.0.1', 53046)#1595988103.71 close !
+2020-07-29 10:02:06,148	21092	INFO	E:\netease\zip\Project\wild\Server\src\tcp\tcp_server.py:45	new conn('127.0.0.1', 53067)
+2020-07-29 10:02:21,717	21092	ERROR	E:\netease\zip\Project\wild\Server\src\tcp\tcp_connection.py:149	Client: ('', 8080)#('127.0.0.1', 53067)#1595988126.15 close !
+2020-07-29 10:08:58,928	21092	INFO	E:\netease\zip\Project\wild\Server\src\tcp\tcp_server.py:45	new conn('127.0.0.1', 53197)
+2020-07-29 10:09:29,029	21092	ERROR	E:\netease\zip\Project\wild\Server\src\tcp\tcp_connection.py:149	Client: ('', 8080)#('127.0.0.1', 53197)#1595988538.93 close !
+2020-07-29 10:12:05,835	21092	INFO	E:\netease\zip\Project\wild\Server\src\tcp\tcp_server.py:45	new conn('127.0.0.1', 53284)
+2020-07-29 10:12:45,786	21092	ERROR	E:\netease\zip\Project\wild\Server\src\tcp\tcp_connection.py:149	Client: ('', 8080)#('127.0.0.1', 53284)#1595988725.83 close !
+2020-07-29 10:15:46,726	21092	INFO	E:\netease\zip\Project\wild\Server\src\tcp\tcp_server.py:45	new conn('127.0.0.1', 56676)
+2020-07-29 10:16:06,536	21092	ERROR	E:\netease\zip\Project\wild\Server\src\tcp\tcp_connection.py:149	Client: ('', 8080)#('127.0.0.1', 56676)#1595988946.73 close !
+2020-07-29 10:17:00,305	21092	INFO	E:\netease\zip\Project\wild\Server\src\tcp\tcp_server.py:45	new conn('127.0.0.1', 56730)
+2020-07-29 10:17:18,907	21092	ERROR	E:\netease\zip\Project\wild\Server\src\tcp\tcp_connection.py:149	Client: ('', 8080)#('127.0.0.1', 56730)#1595989020.31 close !
+2020-07-29 10:17:19,377	21092	INFO	E:\netease\zip\Project\wild\Server\src\tcp\tcp_server.py:45	new conn('127.0.0.1', 56749)
+2020-07-29 10:17:34,765	21092	ERROR	E:\netease\zip\Project\wild\Server\src\tcp\tcp_connection.py:149	Client: ('', 8080)#('127.0.0.1', 56749)#1595989039.38 close !
+2020-07-29 10:17:35,358	21092	INFO	E:\netease\zip\Project\wild\Server\src\tcp\tcp_server.py:45	new conn('127.0.0.1', 56762)
+2020-07-29 10:17:51,226	21092	ERROR	E:\netease\zip\Project\wild\Server\src\tcp\tcp_connection.py:149	Client: ('', 8080)#('127.0.0.1', 56762)#1595989055.36 close !
+2020-07-29 10:18:38,617	21092	INFO	E:\netease\zip\Project\wild\Server\src\tcp\tcp_server.py:45	new conn('127.0.0.1', 56808)
+2020-07-29 10:19:01,848	21092	ERROR	E:\netease\zip\Project\wild\Server\src\tcp\tcp_connection.py:149	Client: ('', 8080)#('127.0.0.1', 56808)#1595989118.62 close !
+2020-07-29 10:19:21,835	22852	INFO	E:\netease\zip\Project\wild\Server\src\net\socket_warp.py:50	Listen:('', 8080)successful !
+2020-07-29 10:19:26,125	22852	INFO	E:\netease\zip\Project\wild\Server\src\tcp\tcp_server.py:45	new conn('127.0.0.1', 56834)
+2020-07-29 10:19:48,168	22852	ERROR	E:\netease\zip\Project\wild\Server\src\tcp\tcp_connection.py:149	Client: ('', 8080)#('127.0.0.1', 56834)#1595989166.12 close !
+2020-07-29 10:20:24,151	22852	INFO	E:\netease\zip\Project\wild\Server\src\tcp\tcp_server.py:45	new conn('127.0.0.1', 56854)
+2020-07-29 10:20:43,207	22852	ERROR	E:\netease\zip\Project\wild\Server\src\tcp\tcp_connection.py:149	Client: ('', 8080)#('127.0.0.1', 56854)#1595989224.15 close !
+2020-07-29 10:21:08,197	1788	INFO	E:\netease\zip\Project\wild\Server\src\net\socket_warp.py:50	Listen:('', 8080)successful !
+2020-07-29 10:21:18,357	1788	INFO	E:\netease\zip\Project\wild\Server\src\tcp\tcp_server.py:45	new conn('127.0.0.1', 56885)
+2020-07-29 10:21:44,276	1788	ERROR	E:\netease\zip\Project\wild\Server\src\tcp\tcp_connection.py:149	Client: ('', 8080)#('127.0.0.1', 56885)#1595989278.36 close !
+2020-07-29 10:22:51,946	1788	INFO	E:\netease\zip\Project\wild\Server\src\tcp\tcp_server.py:45	new conn('127.0.0.1', 56927)
+2020-07-29 10:23:07,635	1788	ERROR	E:\netease\zip\Project\wild\Server\src\tcp\tcp_connection.py:149	Client: ('', 8080)#('127.0.0.1', 56927)#1595989371.95 close !
+2020-07-29 10:23:08,104	1788	INFO	E:\netease\zip\Project\wild\Server\src\tcp\tcp_server.py:45	new conn('127.0.0.1', 56943)
+2020-07-29 10:24:36,881	1788	ERROR	E:\netease\zip\Project\wild\Server\src\tcp\tcp_connection.py:149	Client: ('', 8080)#('127.0.0.1', 56943)#1595989388.1 close !
+2020-07-29 10:25:51,342	1788	INFO	E:\netease\zip\Project\wild\Server\src\tcp\tcp_server.py:45	new conn('127.0.0.1', 56993)
+2020-07-29 13:06:18,045	11400	INFO	E:\netease\zip\Project\wild\Server\src\net\socket_warp.py:50	Listen:('', 8080)successful !
+2020-07-29 13:06:21,211	11400	INFO	E:\netease\zip\Project\wild\Server\src\tcp\tcp_server.py:45	new conn('127.0.0.1', 61832)
+2020-07-29 13:07:04,295	11400	ERROR	E:\netease\zip\Project\wild\Server\src\tcp\tcp_connection.py:149	Client: ('', 8080)#('127.0.0.1', 61832)#1595999181.21 close !
+2020-07-29 14:05:13,496	11400	INFO	E:\netease\zip\Project\wild\Server\src\tcp\tcp_server.py:45	new conn('127.0.0.1', 62790)
+2020-07-29 14:05:56,438	11400	ERROR	E:\netease\zip\Project\wild\Server\src\tcp\tcp_connection.py:149	Client: ('', 8080)#('127.0.0.1', 62790)#1596002713.5 close !
+2020-07-29 15:50:25,858	30456	INFO	E:\netease\zip\Project\wild\Server\src\net\socket_warp.py:50	Listen:('', 8080)successful !
