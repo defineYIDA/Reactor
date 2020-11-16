@@ -17,7 +17,7 @@ class TcpServer(object):
 
         self.loop = loop.EventLoop(time_out)
 
-        self.acceptor = acceptor.Acceptor(self.loop, host_addr, self._logger)
+        self.acceptor = acceptor.Acceptor(self.loop, host_addr)
         self.acceptor.set_new_connection_callback(self.new_connection)
 
         self.conn_map = {}  # 连接的管理
