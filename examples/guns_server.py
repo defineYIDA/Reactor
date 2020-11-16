@@ -4,11 +4,11 @@ import sys
 
 sys.path.append(sys.path[0] + '/guns')
 sys.path.append(os.path.dirname(sys.path[0]) + '/src/net')
-sys.path.append(os.path.dirname(sys.path[0]) + '/src/protocols')
-sys.path.append(os.path.dirname(sys.path[0]) + '/src/protocols/msg')
-sys.path.append(os.path.dirname(sys.path[0]) + '/src/protocols/packet')
-sys.path.append(os.path.dirname(sys.path[0]) + '/src/protocols/msg/request')
-sys.path.append(os.path.dirname(sys.path[0]) + '/src/protocols/msg/response')
+sys.path.append(os.path.dirname(sys.path[0]) + '/src/proto')
+sys.path.append(os.path.dirname(sys.path[0]) + '/src/proto/msg')
+sys.path.append(os.path.dirname(sys.path[0]) + '/src/proto/packet')
+sys.path.append(os.path.dirname(sys.path[0]) + '/src/proto/msg/request')
+sys.path.append(os.path.dirname(sys.path[0]) + '/src/proto/msg/response')
 sys.path.append(os.path.dirname(sys.path[0]) + '/src/tcp')
 sys.path.append(os.path.dirname(sys.path[0]) + '/src/util')
 
