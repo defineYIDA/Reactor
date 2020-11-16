@@ -21,8 +21,8 @@ class TcpClient(object):
         self.loop.is_running = True
         self.loop.loop()
 
-    def connect(self, dst_addr):
-        self.connector.connect(dst_addr)
+    def connect(self, dist_address):
+        self.connector.connect(dist_address)
 
     def disconnect(self):
         if self.tcp_conn:
