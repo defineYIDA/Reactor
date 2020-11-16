@@ -6,10 +6,10 @@ class TcpClient(object):
     tcp client
     """
 
-    def __init__(self, timeout):
-        import connector, loop, logger
+    def __init__(self, timeout, logger):
+        import connector, loop
 
-        self._logger = logger.Logger()  # 日志服务，每一个线程一个
+        self._logger = logger  # 日志服务，每一个线程一个
         self.loop = loop.EventLoop(timeout, self._logger)
         self.tcp_conn = None
         self.connector = connector.Connector(self.loop, self._logger)
@@ -19,8 +19,8 @@ class TcpClient(object):
         self.loop.is_running = True
         self.loop.loop()
 
-    def connect(self, dst_addr):
-        self.connector.connect(dst_addr)
+    def connect(self, dist_address):
+        self.connector.connect(dist_address)
 
     def disconnect(self):
         if self.tcp_conn:

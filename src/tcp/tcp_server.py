@@ -10,10 +10,10 @@ class TcpServer(object):
     tcp server
     """
 
-    def __init__(self, host_addr, time_out):
+    def __init__(self, host_addr, time_out, logger):
         self._host_addr = host_addr
 
-        self._logger = logger.Logger()  # 日志服务，每一个线程一个
+        self._logger = logger  # 日志服务，每一个线程一个
 
         self.loop = loop.EventLoop(time_out, self._logger)
 

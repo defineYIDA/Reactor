@@ -75,14 +75,14 @@ class ClientSocket(Socket):
     client socket
     """
 
-    def connect(self, dst_addr):
+    def connect(self, dist_address):
         """
         conn to server
         """
         import os
         from connector import ConnectorState
 
-        ret = self.sock.connect_ex(dst_addr)
+        ret = self.sock.connect_ex(dist_address)
 
         if ret in error.CONNECTING:
             # 正在建立连接
