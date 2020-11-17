@@ -1,9 +1,9 @@
 # encoding=utf8
-import poller
 import threading
 import Queue
-import timer
-import waker
+from src.net import poller
+from src.util import timer
+from src.util import waker
 
 
 class EventLoop(object):

@@ -1,5 +1,5 @@
-from msg import Msg
-from command import Command
+from src.proto.msg.msg import Msg
+from src.proto.msg.command import Command
 
 
 class BattleInfoResMsg(Msg):

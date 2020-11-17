@@ -1,8 +1,8 @@
 # encoding=utf8
 
 import select
-import error
 import platform
+from src.util import error
 
 
 class Poller(object):

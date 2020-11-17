@@ -4,24 +4,19 @@ import sys
 import time
 
 sys.path.append(sys.path[0] + '/wild')
-sys.path.append(os.path.dirname(sys.path[0]) + '/src/net')
-sys.path.append(os.path.dirname(sys.path[0]) + '/src/proto')
-sys.path.append(os.path.dirname(sys.path[0]) + '/src/proto/msg')
-sys.path.append(os.path.dirname(sys.path[0]) + '/src/proto/packet')
-sys.path.append(os.path.dirname(sys.path[0]) + '/src/proto/msg/request')
-sys.path.append(os.path.dirname(sys.path[0]) + '/src/proto/msg/response')
-sys.path.append(os.path.dirname(sys.path[0]) + '/src/tcp')
-sys.path.append(os.path.dirname(sys.path[0]) + '/src/util')
-sys.path.append(os.path.dirname(sys.path[0]) + '/wild/controller')
+sys.path.append(sys.path[0] + '/')
+sys.path.append(sys.path[0] + '/wild/request')
+sys.path.append(sys.path[0] + '/wild/response')
+sys.path.append(sys.path[0]+ '/wild/controller')
 
-import tcp_server
-from dispatcher import Dispatcher
-from command import Command
+from src.tcp.tcp_server import TcpServer
+from src.util.dispatcher import Dispatcher
+from src.proto.msg.command import Command
 from db_manager import dbManager
 from player_status import PlayerStatus
 
 
-class WildServer(tcp_server.TcpServer):
+class WildServer(TcpServer):
     def __init__(self):
         # 调用父类构造进行Server的初始化
         super(WildServer, self).__init__(('', 8080), time_out=1)

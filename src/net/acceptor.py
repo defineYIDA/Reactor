@@ -1,6 +1,6 @@
 # encoding=utf8
 
-import channel
+from channel import Channel
 from socket_warp import ServerSocket
 
 
@@ -14,7 +14,7 @@ class Acceptor(object):
         self.socket = ServerSocket()
         self.socket.bind_and_listen(host_addr)
 
-        self.accept_channel = channel.Channel(loop, self.socket.fd)
+        self.accept_channel = Channel(loop, self.socket.fd)
         self.accept_channel.add_loop()  # 添加到poller中
 
         self.accept_channel.set_read_callback(self.handle_read)

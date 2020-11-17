@@ -7,14 +7,14 @@ class TcpClient(object):
     """
 
     def __init__(self, timeout):
-        import loop
-        import connector
-        from logger import Logger
+        from src.net.loop import EventLoop
+        from src.net.connector import Connector
+        from src.util.logger import Logger
 
         Logger.start_logger_service()  # 日志服务，每一个线程一个
-        self.loop = loop.EventLoop(timeout)
+        self.loop = EventLoop(timeout)
         self.tcp_conn = None
-        self.connector = connector.Connector(self.loop)
+        self.connector = Connector(self.loop)
         self.connector.set_new_conn_callback(self.new_connection)
 
     def run(self):

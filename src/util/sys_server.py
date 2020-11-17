@@ -57,7 +57,7 @@ class ServerHeartBeatServer(object):
         向所有客户端连接发送心跳
         """
         import time
-        from heart_beat_msg import HeartBeatMsg
+        from src.proto.msg.heart_beat_msg import HeartBeatMsg
 
         # 失活客户端连接
         del_list = []

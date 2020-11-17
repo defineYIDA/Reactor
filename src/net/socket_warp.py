@@ -1,7 +1,7 @@
 # encoding=utf8
 
 import socket
-import error
+from src.util import error
 
 
 class Socket(object):

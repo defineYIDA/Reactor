@@ -21,7 +21,9 @@ class SocketWaker(Waker):
     """
 
     def __init__(self, loop):
-        import socket, channel
+        import socket
+        from src.net.channel import Channel
+
         self._loop = loop
         server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -34,7 +36,7 @@ class SocketWaker(Waker):
         reader.setblocking(False)
         self.r = reader
         self.w = client
-        self.socket_channel = channel.Channel(loop, self.r.fileno())  # 监听该socket
+        self.socket_channel = Channel(loop, self.r.fileno())  # 监听该socket
         self.socket_channel.need_read = True
         self.socket_channel.set_read_callback(self.handle_read)
         self.socket_channel.add_loop()
@@ -56,11 +58,13 @@ class PipeWaker(Waker):
     """
 
     def __init__(self, loop):
-        import os, channel
+        import os
+        from src.net.channel import Channel
+
         self._loop = loop
         self.rfd, self.wfd = os.pipe()
         # 监听pipe，win不支持 https://github.com/defineYIDA/Reactor/issues/1
-        self.pipe_channel = channel.Channel(self._loop, self.rfd)
+        self.pipe_channel = Channel(self._loop, self.rfd)
 
         self.chr = 'p'
         # 注册读事件

@@ -1,9 +1,8 @@
 # encoding=utf8
 
-import loop_decorator
-import socket_warp
-import channel
-import buffer
+from src.net.socket_warp import ClientSocket
+from src.net.channel import Channel
+from src.util import buffer, loop_decorator
 import time
 
 
@@ -21,9 +20,9 @@ class TcpConnection(object):
     def __init__(self, loop, conn_socket, conn_key):
         self._loop = loop
         self.conn_key = conn_key
-        self.socket = socket_warp.ClientSocket(conn_socket)
+        self.socket = ClientSocket(conn_socket)
 
-        self.channel = channel.Channel(loop, self.socket.fd)
+        self.channel = Channel(loop, self.socket.fd)
         self.channel.add_loop()
 
         self.channel.set_read_callback(self.handle_read)
@@ -49,7 +48,8 @@ class TcpConnection(object):
     def send(self, data):
         # 发送数据（主动调用），不一定能发送完
         # 1）客户端往服务端发送消息；2）服务端消息分发
-        import codec
+        from src.proto import codec
+
         try:
             encode = codec.Protocol_Codec()  # 自定义协议的编解码器
             data = encode.encode(data)  # 编码
@@ -82,7 +82,7 @@ class TcpConnection(object):
         """
         读就绪回调
         """
-        import codec
+        from src.proto import codec
 
         recv_data, is_close = self.socket.recv(65535)
         if is_close:
