@@ -1,9 +1,9 @@
 # encoding=utf8
 import threading
 import Queue
-from src.net import poller
 from src.util import timer
-from src.util import waker
+from src.net.poller import Poller
+from src.util.waker import Waker
 
 
 class EventLoop(object):
@@ -12,9 +12,9 @@ class EventLoop(object):
     """
 
     def __init__(self, timeout):
-        self._poller = poller.poller()  # 根据环境选择支持的poller
+        self._poller = Poller()  # 根据环境选择支持的poller
         self._timer_queue = timer.TimerQueue(self)  # 定时器
-        self._waker = waker.waker(self)  # 对 wake up 的支持
+        self._waker = Waker(self)  # 对 wake up 的支持
 
         self.is_running = False
         self._timeout = timeout  # 轮询的阻塞时间

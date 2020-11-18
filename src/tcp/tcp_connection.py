@@ -1,10 +1,9 @@
 # encoding=utf8
-
+import time
 from src.net.socket_warp import ClientSocket
 from src.net.channel import Channel
 from src.util.buffer import Buffer
 from src.util.loop_decorator import RunInLoop
-import time
 
 
 class TcpConnectionState(object):
@@ -49,10 +48,10 @@ class TcpConnection(object):
     def send(self, data):
         # 发送数据（主动调用），不一定能发送完
         # 1）客户端往服务端发送消息；2）服务端消息分发
-        from src.proto import codec
+        from src.proto.msg.msg_codec import MsgCodec
 
         try:
-            encode = codec.Protocol_Codec()  # 自定义协议的编解码器
+            encode = MsgCodec()  # 自定义协议的编解码器
             data = encode.encode(data)  # 编码
         except Exception, e:
             LOG.error(e.message)
@@ -83,7 +82,7 @@ class TcpConnection(object):
         """
         读就绪回调
         """
-        from src.proto import codec
+        from src.proto.msg.msg_codec import MsgCodec
 
         recv_data, is_close = self.socket.recv(65535)
         if is_close:
@@ -92,7 +91,7 @@ class TcpConnection(object):
 
         self.read_buffer.append(recv_data)
 
-        codec = codec.Protocol_Codec()  # 自定义协议编解码器
+        codec = MsgCodec()  # 自定义协议编解码器
 
         while True:
             try:

@@ -14,11 +14,3 @@ class Codec(object):
         自定义协议的解码
         """
         raise NotImplementedError
-
-
-# packet 协议的编解码器
-# from packet_codec import PacketCodec
-# msg 协议的编解码器
-from src.proto.msg.msg_codec import MsgCodec
-
-Protocol_Codec = MsgCodec

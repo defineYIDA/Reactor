@@ -1,7 +1,8 @@
 # encoding=utf8
+import platform
 
 
-class Waker(object):
+class WakerBase(object):
     """
     唤醒阻塞的poller（阻塞的IO复用函数）
     """
@@ -15,7 +16,7 @@ class Waker(object):
         raise NotImplementedError
 
 
-class SocketWaker(Waker):
+class SocketWakerBase(WakerBase):
     """
     using a pair of sockets rather than pipes
     """
@@ -52,7 +53,7 @@ class SocketWaker(Waker):
         self.r.recv(1)
 
 
-class PipeWaker(Waker):
+class PipeWakerBase(WakerBase):
     """
     self-pipe trick
     """
@@ -84,10 +85,7 @@ class PipeWaker(Waker):
             pass
 
 
-import platform
-
-waker = None
 if platform.system() == 'Windows':
-    waker = SocketWaker
+    Waker = SocketWakerBase
 else:
-    waker = PipeWaker
+    Waker = PipeWakerBase

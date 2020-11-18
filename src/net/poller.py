@@ -1,11 +1,10 @@
 # encoding=utf8
-
 import select
 import platform
 from src.util import error
 
 
-class Poller(object):
+class PollerBase(object):
     """
     不同的操作系统对多路复用的支持不同
     win不支持epoll，而select具有良好的平台兼容性
@@ -25,7 +24,7 @@ class Poller(object):
             del self.channel_map[channel.fd]
 
 
-class SelectPoller(Poller):
+class SelectPollerBase(PollerBase):
     """
     对select支持
     """
@@ -36,29 +35,29 @@ class SelectPoller(Poller):
         if not self.channel_map or len(self.channel_map) == 0:
             return active_list
 
-        rlist = []
-        wlist = []
-        xlist = []
+        r_list = []
+        w_list = []
+        x_list = []
 
         for fd in self.channel_map:
             channel = self.channel_map[fd]
             if channel.need_read:
-                rlist.append(fd)
+                r_list.append(fd)
 
             if channel.need_write:
-                wlist.append(fd)
+                w_list.append(fd)
 
             if channel.need_read or channel.need_write:
                 # 异常监测
-                xlist.append(fd)
+                x_list.append(fd)
 
-        if not rlist and not wlist and not xlist:
+        if not r_list and not w_list and not x_list:
             return active_list
 
         try:
             import time
             # s = time.time()
-            rlist, wlist, xlist = select.select(rlist, wlist, xlist, timeout)
+            r_list, w_list, x_list = select.select(r_list, w_list, x_list, timeout)
 
         except select.error, e:
             if e.args[0] == error.EINTR:
@@ -68,17 +67,17 @@ class SelectPoller(Poller):
                 print e.message
                 raise
         # print 'time:' + str(time.time() - s)
-        for rfd in rlist:
+        for rfd in r_list:
             channel_ins = self.channel_map[rfd]
             channel_ins.readable = True
             active_list.append(channel_ins)
 
-        for wfd in wlist:
+        for wfd in w_list:
             channel_ins = self.channel_map[wfd]
             channel_ins.writable = True
             active_list.append(channel_ins)
 
-        for efd in xlist:
+        for efd in x_list:
             channel_ins = self.channel_map[efd]
             channel_ins.error = True
             active_list.append(channel_ins)
@@ -86,9 +85,8 @@ class SelectPoller(Poller):
         return active_list
 
 
-poller = None
 if platform.system() == 'Windows':
-    poller = SelectPoller
+    Poller = SelectPollerBase
 else:
     # TODO 不同环境下对其他复用函数的支持
-    poller = SelectPoller
+    Poller = SelectPollerBase
