@@ -2,7 +2,8 @@
 
 from src.net.socket_warp import ClientSocket
 from src.net.channel import Channel
-from src.util import buffer, loop_decorator
+from src.util.buffer import Buffer
+from src.util.loop_decorator import RunInLoop
 import time
 
 
@@ -32,8 +33,8 @@ class TcpConnection(object):
         self.channel.need_write = False
         self.channel.set_error_callback(self.handle_error)
 
-        self.read_buffer = buffer.Buffer()
-        self.output_buffer = buffer.Buffer()
+        self.read_buffer = Buffer()
+        self.output_buffer = Buffer()
 
         self.state = TcpConnectionState.CONNECTED
 
@@ -44,7 +45,7 @@ class TcpConnection(object):
         # 上次接收到客户端心跳的时间
         self.last_recv_heart_time = time.time()
 
-    @loop_decorator.RunInLoop
+    @RunInLoop
     def send(self, data):
         # 发送数据（主动调用），不一定能发送完
         # 1）客户端往服务端发送消息；2）服务端消息分发
@@ -68,7 +69,7 @@ class TcpConnection(object):
             # 发送完全
             self.write_complete_callback()
 
-    @loop_decorator.RunInLoop
+    @RunInLoop
     def shutdown(self):
         if self.state != TcpConnectionState.CONNECTED:
             return
@@ -112,7 +113,7 @@ class TcpConnection(object):
         """
         channel.need_write 时会被调用（数据为发送完全就会设置此回调在就绪的时候继续发送）
         """
-        assert isinstance(self.output_buffer, buffer.Buffer)
+        assert isinstance(self.output_buffer, Buffer)
 
         sent_data = self.output_buffer.get_all()
         sent_count, is_close = self.socket.send(sent_data)

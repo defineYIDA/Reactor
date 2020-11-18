@@ -2,9 +2,9 @@
 
 import json
 import struct
-from codec import Codec
-from protocol import Protocol
-from msg_base import MsgBase
+from src.proto.codec import Codec
+from src.proto.protocol import Protocol
+from src.proto.msg.msg_base import MsgBase
 
 
 class MsgCodec(Codec, Protocol):
@@ -82,31 +82,31 @@ class MsgCodec(Codec, Protocol):
         return command, msg
 
 
-def _test(b, en):
-    import time
-    time.sleep(1)
-    i = 0
-    while i < len(en):
-        if i + 20 < len(en):
-            b.append(en[i:i + 20])
-        else:
-            b.append(en[i:])
-
-
-if __name__ == '__main__':
-    import buffer
-    import get_setting_req_msg, setting
-
-    msg = get_setting_req_msg.GetSettingReqMsg({
-        "data": setting.PlayerSetting().dict,
-    })
-    codec = MsgCodec()
-    s = codec.encode(msg)
-
-    b = buffer.Buffer()
-    b.append(s)
-
-    command, login = codec.decode(b)
-
-    print command
-    print str(login.data)
+# def _test(b, en):
+#     import time
+#     time.sleep(1)
+#     i = 0
+#     while i < len(en):
+#         if i + 20 < len(en):
+#             b.append(en[i:i + 20])
+#         else:
+#             b.append(en[i:])
+#
+#
+# if __name__ == '__main__':
+#     from src.util.buffer import Buffer
+#     import get_setting_req_msg, setting
+#
+#     msg = get_setting_req_msg.GetSettingReqMsg({
+#         "data": setting.PlayerSetting().dict,
+#     })
+#     codec = MsgCodec()
+#     s = codec.encode(msg)
+#
+#     b = Buffer()
+#     b.append(s)
+#
+#     command, login = codec.decode(b)
+#
+#     print command
+#     print str(login.data)

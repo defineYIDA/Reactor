@@ -49,7 +49,7 @@ class ServerSocket(Socket):
 
     def accept(self):
         """
-        server socket accpet (listen socket)
+        server socket accept (listen socket)
         """
         conn_socket = None
         peer_host = None

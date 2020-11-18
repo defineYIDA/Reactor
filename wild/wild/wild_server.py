@@ -28,7 +28,7 @@ class WildServer(TcpServer):
         """
         message就绪进行分发
         """
-        Dispatcher.HandlerEvent(commend, tcp_connection, msg)
+        Dispatcher.handler_event(commend, tcp_connection, msg)
 
     def write_complete(self):
         pass
@@ -39,24 +39,24 @@ class WildServer(TcpServer):
         初始化
         """
         # 客户端心跳
-        Dispatcher.RegisterHandler(Command.HEARTBEAT, self.client_heart_beat_handler)
+        Dispatcher.register_handler(Command.HEARTBEAT, self.client_heart_beat_handler)
         # 登陆消息
-        Dispatcher.RegisterHandler(Command.LOGIN_REQUEST, self._login_handler)
+        Dispatcher.register_handler(Command.LOGIN_REQUEST, self._login_handler)
         # 注册消息
-        Dispatcher.RegisterHandler(Command.REGISTER_REQUEST, self._register_handler)
+        Dispatcher.register_handler(Command.REGISTER_REQUEST, self._register_handler)
         # 获得设置参数消息
-        Dispatcher.RegisterHandler(Command.GET_SETTING_REQUEST, self._get_setting_handler)
+        Dispatcher.register_handler(Command.GET_SETTING_REQUEST, self._get_setting_handler)
         # 获得玩家状态消息
-        Dispatcher.RegisterHandler(Command.GET_PLAYER_STATUS_REQUEST, self._get_player_status_handler)
+        Dispatcher.register_handler(Command.GET_PLAYER_STATUS_REQUEST, self._get_player_status_handler)
         # 玩家事件处理
-        Dispatcher.RegisterHandler(Command.EVENT_REQUEST, self._event_handler)
+        Dispatcher.register_handler(Command.EVENT_REQUEST, self._event_handler)
         # 加入房间
-        Dispatcher.RegisterHandler(Command.JOIN_ROOM_REQUEST, self._join_room_handler)
+        Dispatcher.register_handler(Command.JOIN_ROOM_REQUEST, self._join_room_handler)
         # 玩家信息
-        Dispatcher.RegisterHandler(Command.PLAYER_INFO_REQUEST, self._player_info_handler)
+        Dispatcher.register_handler(Command.PLAYER_INFO_REQUEST, self._player_info_handler)
         # 战斗消息
         from battle_info_handler import BattleInfoHandler
-        Dispatcher.RegisterHandler(Command.BATTLE_INFO_REQUEST, BattleInfoHandler().battle_info_handler)
+        Dispatcher.register_handler(Command.BATTLE_INFO_REQUEST, BattleInfoHandler().battle_info_handler)
 
     def _login_handler(self, tcp_connection, msg):
         """

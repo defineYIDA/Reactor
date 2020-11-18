@@ -66,6 +66,7 @@ class Buffer(object):
         if self.read_index == self.write_index and self.write_index > self._max_size:
             self.reset()
 
+
 if __name__ == '__main__':
     buffer = StringIO()
     buffer.write("12345678910")

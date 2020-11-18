@@ -21,7 +21,7 @@ class Acceptor(object):
         self.accept_channel.need_read = True
         self.accept_channel.set_error_callback(self.handle_error)
 
-        self.new_connection_callback = None  # accpet到新连接执行此回调
+        self.new_connection_callback = None  # accept到新连接执行此回调
 
     def set_new_connection_callback(self, method):
         # server 连接建立执行的回调
@@ -31,8 +31,6 @@ class Acceptor(object):
         """
         accept 到一个新client socket，执行callback，最终会注册到poller中
         """
-        conn_socket = None
-        peer_host = None
         conn_socket, peer_host = self.socket.accept()
 
         if self.new_connection_callback and conn_socket is not None and peer_host is not None:

@@ -16,10 +16,12 @@ class Connector(object):
     """
 
     def __init__(self, loop):
-        import socket_warp, channel
+        from channel import Channel
+        from socket_warp import ClientSocket
+
         self._loop = loop
-        self.socket = socket_warp.ClientSocket()
-        self.conn_channel = channel.Channel(loop, self.socket.fd)
+        self.socket = ClientSocket()
+        self.conn_channel = Channel(loop, self.socket.fd)
         self.conn_channel.add_loop()
 
         self.conn_channel.set_write_callback(self.handle_write)

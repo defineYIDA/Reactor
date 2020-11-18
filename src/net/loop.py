@@ -20,8 +20,8 @@ class EventLoop(object):
         self._timeout = timeout  # 轮询的阻塞时间
         self._thread_id = threading.currentThread()  # 当前线程id
 
-        self.event_fun_queue = Queue.Queue()  # 事件队列需要在主线程中执行
-        self.is_excuting_event = False
+        self.event_func_queue = Queue.Queue()  # 事件队列需要在主线程中执行
+        self.is_executing_event = False
 
     def local_thread(self):
         # 当前线程是否是reactor的主线程
@@ -29,22 +29,22 @@ class EventLoop(object):
 
     def add_event_fun(self, fun_with_args):
         # 向事件队列中添加事件函数
-        self.event_fun_queue.put(fun_with_args)
+        self.event_func_queue.put(fun_with_args)
 
-        if not self.local_thread() or self.is_excuting_event:
+        if not self.local_thread() or self.is_executing_event:
             # 当其他线程添加事件时唤醒poller
             self._waker.wake_up()  # 唤醒poller
 
-    def excute_event_fun(self):
-        self.is_excuting_event = True
+    def execute_event_func(self):
+        self.is_executing_event = True
 
-        count = self.event_fun_queue.qsize()
+        count = self.event_func_queue.qsize()
         while count > 0:
-            fun, calle_ins, args, kwargs = self.event_fun_queue.get()
-            fun(calle_ins, *args, **kwargs)
+            func, call_ins, args, kwargs = self.event_func_queue.get()
+            func(call_ins, *args, **kwargs)
             count -= 1
 
-        self.is_excuting_event = False
+        self.is_executing_event = False
 
     def loop(self):
         if not self.local_thread():
@@ -62,7 +62,7 @@ class EventLoop(object):
             self._timer_queue.schedule()
 
             # 执行队列中的事件
-            self.excute_event_fun()
+            self.execute_event_func()
 
     def update_channel(self, channel):
         self._poller.update_channel(channel)

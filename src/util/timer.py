@@ -11,7 +11,7 @@ class Timer(object):
     def __init__(self, internal, method, *args, **kwargs):
         import time
         self.internal = internal  # 执行间隔
-        self.excute_time = time.time() + internal  # 当前事件+间隔后执行第一次
+        self.execute_time = time.time() + internal  # 当前事件+间隔后执行第一次
 
         self._method = method
         self._args = args
@@ -32,11 +32,11 @@ class Timer(object):
         """
         return self.internal >= 0
 
-    def excute_event(self):
+    def execute_event(self):
         self._method(*self._args, **self._kwargs)
 
     def __le__(self, other):
-        return self.excute_time <= other.excute_time
+        return self.execute_time <= other.excute_time
 
 
 class TimerQueue(object):
@@ -65,10 +65,10 @@ class TimerQueue(object):
                 self._cancel_count -= 1
                 continue
             else:
-                timer.excute_event()  # 执行计时事件
+                timer.execute_event()  # 执行计时事件
                 if timer.repeatable:
                     # 需要重复执行
-                    timer.excute_time = time.time() + timer.internal
+                    timer.execute_time = time.time() + timer.internal
                     self._heap.put(timer)
 
     @loop_decorator.RunInLoop
@@ -102,9 +102,12 @@ class TimerQueue(object):
 
 
 if __name__ == '__main__':
-    import time, loop, logger
+    import time
+    from src.net.loop import EventLoop
+    from logger import Logger
 
-    timer_queue = TimerQueue(loop.EventLoop(0.01, logger.Logger()))
+    Logger.start_logger_service()
+    timer_queue = TimerQueue(EventLoop(0.01))
 
 
     def test_func():

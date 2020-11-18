@@ -29,7 +29,9 @@ class TcpClient(object):
             self.tcp_conn.shutdown()
 
     def new_connection(self, conn_socket, peer_addr):
-        import tcp_connection, time
+        import time
+        import tcp_connection
+
         # client连接成功时调用
         conn_key = '{}#{}#{}'.format(str(conn_socket.getsockname()), str(peer_addr), str(time.time()))
         self.tcp_conn = tcp_connection.TcpConnection(self.loop, conn_socket, conn_key)

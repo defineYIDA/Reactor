@@ -2,8 +2,8 @@
 
 import cPickle
 import struct
-from codec import Codec
-from protocol import Protocol
+from src.proto.codec import Codec
+from src.proto.protocol import Protocol
 
 
 class PacketCodec(Codec, Protocol):
@@ -89,11 +89,13 @@ def _test(b, en):
 
 
 if __name__ == '__main__':
-    import message_packet, buffer, thread
+    import message_packet
+    from src.util.buffer import Buffer
+
     msg = message_packet.MessagePacket("hello!!!")
     codec = PacketCodec()
     en = codec.encode(msg)
-    b = buffer.Buffer()
+    b = Buffer()
     b.append(en)
     # 模拟粘包
     msg1 = message_packet.MessagePacket("hello!!!")
