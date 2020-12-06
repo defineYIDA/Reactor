@@ -80,33 +80,3 @@ class MsgCodec(Codec, Protocol):
         buffer.add_read_index(data_len)  # 更改read指针
 
         return command, msg
-
-
-# def _test(b, en):
-#     import time
-#     time.sleep(1)
-#     i = 0
-#     while i < len(en):
-#         if i + 20 < len(en):
-#             b.append(en[i:i + 20])
-#         else:
-#             b.append(en[i:])
-#
-#
-# if __name__ == '__main__':
-#     from src.util.buffer import Buffer
-#     import get_setting_req_msg, setting
-#
-#     msg = get_setting_req_msg.GetSettingReqMsg({
-#         "data": setting.PlayerSetting().dict,
-#     })
-#     codec = MsgCodec()
-#     s = codec.encode(msg)
-#
-#     b = Buffer()
-#     b.append(s)
-#
-#     command, login = codec.decode(b)
-#
-#     print command
-#     print str(login.data)
