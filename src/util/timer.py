@@ -1,5 +1,5 @@
 # encoding=utf8
-import loop_decorator
+import loop_deco
 
 
 class Timer(object):
@@ -36,7 +36,7 @@ class Timer(object):
         self._method(*self._args, **self._kwargs)
 
     def __le__(self, other):
-        return self.execute_time <= other.excute_time
+        return self.execute_time <= other.execute_time
 
 
 class TimerQueue(object):
@@ -54,7 +54,7 @@ class TimerQueue(object):
         import time
         now = time.time()
         while not self._heap.empty():
-            if now < self._heap.queue[0].excute_time:
+            if now < self._heap.queue[0].execute_time:
                 break
 
             timer = self._heap.get()
@@ -71,11 +71,11 @@ class TimerQueue(object):
                     timer.execute_time = time.time() + timer.internal
                     self._heap.put(timer)
 
-    @loop_decorator.RunInLoop
+    @loop_deco.RunInLoop
     def add_timer(self, timer):
         self._heap.put(timer)
 
-    @loop_decorator.RunInLoop
+    @loop_deco.RunInLoop
     def remove_timer(self, timer_id):
         for timer in self._heap.queue:
             if timer.timer_id == timer_id:

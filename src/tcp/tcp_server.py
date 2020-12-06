@@ -38,11 +38,16 @@ class TcpServer(object):
         conn_key = '{}#{}#{}'.format(str(self._host_addr), str(peer_host), str(time.time()))  # 四元组 + 时间戳
         conn = tcp_connection.TcpConnection(self.loop, conn_socket, conn_key)
         conn.set_close_callback(self.remove_connection)  # 指定打开操作
+        # TODO 1）初始化channel的上下文；2）设置pipeline
         conn.set_message_callback(self.on_message)
         conn.set_write_complete_callback(self.write_complete)
 
         self.conn_map[conn_key] = conn
-        LOG.info('new conn' + str(peer_host))
+        LOG.info('new conn ' + str(peer_host))
+
+    def channel_init(self, ch):
+        """初始化channel上下文"""
+        raise NotImplementedError
 
     def remove_connection(self, connection):
         conn_key = connection.conn_key

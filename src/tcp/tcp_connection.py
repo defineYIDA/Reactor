@@ -3,7 +3,7 @@ import time
 from src.net.socket_warp import ClientSocket
 from src.net.channel import Channel
 from src.util.buffer import Buffer
-from src.util.loop_decorator import RunInLoop
+from src.util.loop_deco import RunInLoop
 
 
 class TcpConnectionState(object):
