@@ -51,10 +51,11 @@ class Pipeline(object):
 
     def inbound_end(self, ctx, msg):
         """入站事件结束"""
-        if self._outbound_head:
-            self.outbound_process(ctx, msg)
-        else:
-            self.outbound_end(ctx, msg)
+        # if self._outbound_head:
+        #     self.outbound_process(ctx, msg)
+        # else:
+        #     self.outbound_end(ctx, msg)
+        pass
 
     def outbound_end(self, ctx, msg):
         """出站结束"""

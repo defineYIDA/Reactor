@@ -1,5 +1,6 @@
 # encoding=utf8
 from pipeline import Pipeline
+from channel_context import ChannelContext
 from src.proto.msg.msg_handler import MsgInboundHandler, MsgOutboundHandler
 
 
@@ -11,17 +12,6 @@ class MsgDecodeHandler(MsgInboundHandler):
     def handle_read(self, ctx, msg):
         print("decode ..." + msg['data'])
         msg['data'] += ' -1'
-        self.handle_next(ctx, msg)
-
-
-class MsgEncodeHandler(MsgOutboundHandler):
-
-    def __init__(self):
-        super(MsgEncodeHandler, self).__init__()
-
-    def handle_read(self, ctx, msg):
-        print("encode ..." + msg['data'])
-        msg['data'] += ' -2'
         self.handle_next(ctx, msg)
 
 
@@ -47,10 +37,34 @@ class MsgInboundHandler2(MsgInboundHandler):
         self.handle_next(ctx, msg)
 
 
+class MsgInboundHandler3(MsgInboundHandler):
+
+    def __init__(self):
+        super(MsgInboundHandler3, self).__init__(1)
+
+    def handle_read(self, ctx, msg):
+        print('MsgInboundHandler3 ...' + msg['data'])
+        new_msg = {'command': 1, 'data': 'new msg'}
+        ctx.pipe.outbound_process(ctx, new_msg)
+
+
+#############################################################################
+
+class MsgEncodeHandler(MsgOutboundHandler):
+
+    def __init__(self):
+        super(MsgEncodeHandler, self).__init__()
+
+    def handle_read(self, ctx, msg):
+        print("encode ..." + msg['data'])
+        msg['data'] += ' -2'
+        self.handle_next(ctx, msg)
+
+
 class MsgOutboundHandler1(MsgOutboundHandler):
 
     def __init__(self):
-        super(MsgOutboundHandler1, self).__init__(2)
+        super(MsgOutboundHandler1, self).__init__(1)
 
     def handle_read(self, ctx, msg):
         print('MsgOutboundHandler1 ...' + msg['data'])
@@ -58,9 +72,8 @@ class MsgOutboundHandler1(MsgOutboundHandler):
         self.handle_next(ctx, msg)
 
 
-if __name__ == '__main__':
-    from channel_context import ChannelContext
-
+def test1():
+    """入站事件结束后，自动到出站事件（已改为主动调用出战事件）"""
     pipeline = Pipeline()
     channel_ctx = ChannelContext(11, pipeline)
 
@@ -87,3 +100,26 @@ if __name__ == '__main__':
     # print '-------------------------------------'
     # print hash(MsgDecodeHandler())
     # print hash(MsgInboundHandler1())
+
+
+def test2():
+    pipeline = Pipeline()
+    channel_ctx = ChannelContext(11, pipeline)
+
+    pipeline.add_last(MsgDecodeHandler())
+    pipeline.add_last(MsgEncodeHandler())
+    pipeline.add_last(MsgInboundHandler1())
+    pipeline.add_last(MsgInboundHandler2())
+    pipeline.add_last(MsgOutboundHandler1())
+    pipeline.add_last(MsgInboundHandler3())
+
+    msg1 = {'command': 1, 'data': 'msg1'}
+    res = pipeline.inbound_process(channel_ctx, msg1)
+    print res
+
+
+if __name__ == '__main__':
+    # 测试大致流程
+    test1()
+    print '-------------------------------------'
+    test2()

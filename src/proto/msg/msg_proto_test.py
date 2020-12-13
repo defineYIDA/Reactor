@@ -2,7 +2,7 @@
 from src.proto.msg.msg import Msg
 
 
-class GetSettingReqMsg(Msg):
+class ReqMsg(Msg):
 
     def __init__(self, data):
         self.data = data
@@ -11,22 +11,13 @@ class GetSettingReqMsg(Msg):
         return 1
 
 
-def _test(b, en):
-    import time
-    time.sleep(1)
-    i = 0
-    while i < len(en):
-        if i + 20 < len(en):
-            b.append(en[i:i + 20])
-        else:
-            b.append(en[i:])
-
-
 if __name__ == '__main__':
+    import struct
+    import json
     from src.util.buffer import Buffer
     from src.proto.msg.msg_codec import MsgCodec
 
-    msg = GetSettingReqMsg({
+    msg = ReqMsg({
         "data": [1, 2, 3],
     })
     codec = MsgCodec()
@@ -34,18 +25,28 @@ if __name__ == '__main__':
     # print s[12:16]
 
     b = Buffer()
+    # 随意填充buffer
+    dirty = struct.pack('!I', 1111)
+    dirty_len = len(dirty)
+    b.append(dirty)
+    b.read(dirty_len)
+    b.add_read_index(dirty_len)
+    print 'read_index = ' + str(b.read_index)
+
     b.append(s)
+    print 'data_len = ' + str(len(json.dumps(msg.data)))
 
-    import struct
-    import json
-    print len(json.dumps(msg.data))
+    # 移动到协议首部长度域的位置
+    # idx = b.read_index
+    # b.add_read_index(12)
+    # data = struct.unpack('!I', b.read(4))
+    data = struct.unpack('!I', b.read(4, 12))
+    print 'data_len = ' + str(data)
+    print 'read_index = ' + str(b.read_index)
 
-    b._buf.seek(12, 0)
-    data_len = struct.unpack('!I', b._buf.read(4))
-    print data_len
+    # 恢复初始位置
+    # b.read_index = idx
 
-
-    command, login = codec.decode(b)
-
-    print command
-    print str(login.data)
+    command, msg = codec.decode(b)
+    print str(command) + '--' + str(msg.data)
+    print 'read_index = ' + str(b.read_index)

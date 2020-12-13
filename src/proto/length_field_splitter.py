@@ -1,5 +1,6 @@
 # encoding=utf8
 from src.pipeline.pipeline_handler import InboundHandler
+from src.proto.protocol import Protocol
 
 
 class LengthFieldSplitter(InboundHandler):
@@ -11,8 +12,14 @@ class LengthFieldSplitter(InboundHandler):
         :param field_length: 字段长度
         """
         super(LengthFieldSplitter, self).__init__()
+        if field_offset < 0 or field_length < 0:
+            raise Exception('Splitter init failed, parameter error !')
+
         self._field_offset = field_offset
         self._field_length = field_length
+
+        self._magic_fmt = '!I'
+        self._field_fmt = '!I'
 
     def handle_read(self, ctx, msg_buffer):
         """
@@ -21,9 +28,29 @@ class LengthFieldSplitter(InboundHandler):
         :param msg_buffer:
         :return:
         """
-        if not msg_buffer or msg_buffer.size < self._field_offset:
+        import struct
+
+        buf_size = msg_buffer.size
+        if buf_size < len(Protocol.MAGIC_NUMBER):
             return
-        # TODO 得到字节流中某个位置的数据
+
+        # 校验magic_number
+        magic_number = struct.unpack(self._magic_fmt, msg_buffer.read(Protocol.MAGIC_NUMBER_LEN))
+        if magic_number != Protocol.MAGIC_NUMBER:
+            return
+
+        if buf_size < self._field_offset + self._field_length:
+            ctx.packet_ready = False
+            return
+
+        # 校验数据域数据是否完整
+        field_val = struct.unpack(self._field_fmt, msg_buffer.read(self._field_length, self._field_offset))
+        if msg_buffer.size - self._field_offset - self._field_length < field_val:
+            ctx.packet_ready = False
+            return
+
+        ctx.packet_ready = True
+        self.handle_next(ctx, msg_buffer)
 
     def verify(self, ctx, msg):
         return True
