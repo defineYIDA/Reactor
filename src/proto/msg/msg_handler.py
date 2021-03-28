@@ -16,8 +16,7 @@ class MsgInboundHandler(InboundHandler):
         if self.command == -1:
             return True
         else:
-            cmd = msg.get('command', None)
-            return cmd == self.command if cmd else False
+            return msg.get_command() == self.command
 
 
 class MsgOutboundHandler(OutboundHandler):
@@ -33,5 +32,4 @@ class MsgOutboundHandler(OutboundHandler):
         if self.command == -1:
             return True
         else:
-            cmd = msg.get('command', None)
-            return cmd == self.command if cmd else False
+            return msg.get_command() == self.command

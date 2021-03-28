@@ -51,3 +51,18 @@ class OutboundHandler(HandlerBase):
 
     def verify(self, ctx, msg):
         return False
+
+class Splitter(HandlerBase):
+    """拆包器"""
+    def __init__(self):
+        super(Splitter, self).__init__()
+
+    def handle_read(self, ctx, msg):
+        """拆包器handle_read的作用是判断有效且完整的协议包是否到达
+        不满足协议包有效性校验/不完整直接return
+        至少有一个协议包完整则交由后续pipeline处理
+        """
+        return True
+
+    def verify(self, ctx, msg):
+        return False

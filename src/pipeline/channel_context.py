@@ -5,9 +5,31 @@ class ChannelContext(object):
 
     def __init__(self, conn, pipeline):
         """conn处理的上下文"""
-        self.conn = conn
+        import weakref
+        self.conn = weakref.ref(conn)
         self.pipe = pipeline
-        self.packet_ready = False  # 表示完整协议包可能就绪
 
-    def flush(self):
-        pass
+    def write_and_flush(self, msg):
+        """直接出站
+        """
+        if self.pipe:
+            self.pipe.outbound_process(self, msg)
+    
+    def direct_send(self, msg):
+        """直接发送
+        """
+        if not msg:
+            return
+        codec = self.get_codec()
+        if not codec:
+            self.conn().send(msg)
+        else:
+            self.conn().send(codec.encode(msg))
+
+    def get_splitter(self):
+        """获得拆包器"""
+        return self.pipe.splitter if self.pipe else None
+
+    def get_codec(self):
+        """获得编解码器"""
+        return self.pipe.codec if self.pipe else None

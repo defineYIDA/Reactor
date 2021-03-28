@@ -37,28 +37,28 @@ class TcpConnection(object):
 
         self.state = TcpConnectionState.CONNECTED
 
-        self.message_callback = None
         self.write_complete_callback = None
         self.close_callback = None
+
+        self.ctx = None
 
         # 上次接收到客户端心跳的时间
         self.last_recv_heart_time = time.time()
 
     @RunInLoop
     def send(self, data):
-        # 发送数据（主动调用），不一定能发送完
-        # 1）客户端往服务端发送消息；2）服务端消息分发
-        from src.proto.msg.msg_codec import MsgCodec
-
-        try:
-            encode = MsgCodec()  # 自定义协议的编解码器
-            data = encode.encode(data)  # 编码
-        except Exception, e:
-            LOG.error(e.message)
+        """发送数据，一次不一定发送完全
+        data 协议编码str
+        """
+        if not data or not isinstance(data, str):
+            LOG.error("send error, data can't send")
             return
+
         sent_count, is_close = self.socket.send(data)
         if is_close:
-            self.handle_close()
+            if self.state != TcpConnectionState.DISCONNECTED: 
+                self.handle_close()
+            return
 
         if sent_count < len(data):
             # 剩余为发送内容放入output_buffer
@@ -82,7 +82,6 @@ class TcpConnection(object):
         """
         读就绪回调
         """
-        from src.proto.msg.msg_codec import MsgCodec
 
         recv_data, is_close = self.socket.recv(65535)
         if is_close:
@@ -91,22 +90,16 @@ class TcpConnection(object):
 
         self.read_buffer.append(recv_data)
 
-        codec = MsgCodec()  # 自定义协议编解码器
-
-        while True:
-            try:
-                command, packet = codec.decode(self.read_buffer)
-
-                if not command and not packet:
-                    break
-                if self.message_callback:
-                    # 消息就绪回调
-                    self.message_callback(self, command, packet)
-            except Exception, e:
-                #  解码异常，关闭客户端连接
-                LOG.error(e.message)
-                self.handle_close()
-                break
+        if self.ctx:
+            splitter = self.ctx.get_splitter()
+            if splitter:
+                while True:
+                    res = splitter.handle_read(self.ctx, self.read_buffer)
+                    if not res:
+                        break
+                    self.ctx.pipe.inbound_process(self.ctx, self.read_buffer)
+            else:
+                self.ctx.pipe.inbound_process(self.ctx, self.read_buffer)
 
     def handle_write(self):
         """
@@ -145,14 +138,10 @@ class TcpConnection(object):
 
         self.channel.close()  # 将channel从poller中移除
         self.state = TcpConnectionState.DISCONNECTED
-        LOG.error('Client: ' + self.conn_key + ' close !')
 
     def set_close_callback(self, method):
         # connection_map中移除tcp_conn
         self.close_callback = method
-
-    def set_message_callback(self, method):
-        self.message_callback = method
 
     def set_write_complete_callback(self, method):
         self.write_complete_callback = method

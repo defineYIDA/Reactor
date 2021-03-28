@@ -1,9 +1,9 @@
 # encoding=utf8
-from src.pipeline.pipeline_handler import InboundHandler
+from src.pipeline.pipeline_handler import Splitter
 from src.proto.protocol import Protocol
 
 
-class LengthFieldSplitter(InboundHandler):
+class LengthFieldSplitter(Splitter):
 
     def __init__(self, field_offset, field_length):
         """
@@ -31,26 +31,22 @@ class LengthFieldSplitter(InboundHandler):
         import struct
 
         buf_size = msg_buffer.size
-        if buf_size < len(Protocol.MAGIC_NUMBER):
-            return
+        if buf_size < Protocol.MAGIC_NUMBER_LEN:
+            return False
 
         # 校验magic_number
-        magic_number = struct.unpack(self._magic_fmt, msg_buffer.read(Protocol.MAGIC_NUMBER_LEN))
+        (magic_number,) = struct.unpack(self._magic_fmt, msg_buffer.read(Protocol.MAGIC_NUMBER_LEN))
         if magic_number != Protocol.MAGIC_NUMBER:
-            return
+            return False
 
         if buf_size < self._field_offset + self._field_length:
-            ctx.packet_ready = False
-            return
+            return False
 
         # 校验数据域数据是否完整
-        field_val = struct.unpack(self._field_fmt, msg_buffer.read(self._field_length, self._field_offset))
+        (field_val,) = struct.unpack(self._field_fmt, msg_buffer.read(self._field_length, self._field_offset))
         if msg_buffer.size - self._field_offset - self._field_length < field_val:
-            ctx.packet_ready = False
-            return
-
-        ctx.packet_ready = True
-        self.handle_next(ctx, msg_buffer)
+            return False
+        return True
 
     def verify(self, ctx, msg):
         return True

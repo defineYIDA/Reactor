@@ -100,15 +100,12 @@ class Logger(object):
         import __builtin__
         setattr(__builtin__, 'LOG', cls())
 
-    def write_log(self, log_message, level, sync=False):
+    def write_log(self, call_frame, log_message, level, sync=False):
         """
         写入日志文件，会执行在主线程，通过队列异步处理防止对主线程的阻塞
+        call_frame: 调用write_log 的pyFrameObject
         sync: 是否阻塞至缓冲区全部写入文件
         """
-        import sys
-
-        call_frame = sys._getframe().f_back  # 获取调用write_log 的pyFrameObject
-
         # 获取事发地点的文件名,行号和函数名
         fn, lno, func = call_frame.f_code.co_filename, call_frame.f_lineno, call_frame.f_code.co_name
 
@@ -133,10 +130,14 @@ class Logger(object):
             self._last_flush_time = now
 
     def info(self, msg, sync=False):
-        self.write_log(msg, logging.INFO, sync)
+        import sys
+        call_frame = sys._getframe().f_back
+        self.write_log(call_frame, msg, logging.INFO, sync)
 
     def error(self, msg, sync=False):
-        self.write_log(msg, logging.ERROR, sync)
+        import sys
+        call_frame = sys._getframe().f_back
+        self.write_log(call_frame, msg, logging.ERROR, sync)
 
     def _create_logger(self):
         if self._logger:

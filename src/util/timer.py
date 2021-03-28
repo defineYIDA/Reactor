@@ -73,7 +73,8 @@ class TimerQueue(object):
 
     @loop_deco.RunInLoop
     def add_timer(self, timer):
-        self._heap.put(timer)
+        if timer:
+            self._heap.put(timer)
 
     @loop_deco.RunInLoop
     def remove_timer(self, timer_id):

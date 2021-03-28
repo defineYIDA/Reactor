@@ -36,8 +36,20 @@ class TcpClient(object):
         conn_key = '{}#{}#{}'.format(str(conn_socket.getsockname()), str(peer_addr), str(time.time()))
         self.tcp_conn = tcp_connection.TcpConnection(self.loop, conn_socket, conn_key)
 
-        self.tcp_conn.set_message_callback(self.on_message)
+        self.tcp_conn.set_close_callback(self.on_connection_close)
         self.tcp_conn.set_write_complete_callback(self.write_complete)
+
+        self.tcp_conn.ctx = self.init_channel(self.tcp_conn)
+        self.on_connection_ready(self.tcp_conn)
+
+    def init_channel(self, conn):
+        """初始化channel上下文"""
+        from src.pipeline.pipeline import Pipeline
+        from src.pipeline.channel_context import ChannelContext
+        pipe = Pipeline()
+        self.init_pipeline(pipe)
+        ctx = ChannelContext(conn, pipe)
+        return ctx
 
     def send(self, data):
         if self.tcp_conn:
@@ -45,14 +57,25 @@ class TcpClient(object):
         else:
             LOG.error('连接建立失败不能发送消息')
 
-    def on_message(self, tcp_connection, command, packet):
-        """
-        消息到来
-        """
+    def add_timer(self, timer):
+        """添加计时器"""
+        self.loop.add_timer(timer)
+
+    def on_connection_close(self, connection):
+        LOG.info('connection close', True)
+        self.loop.is_running = False
+
+    def init_pipeline(self, pipe):
+        """初始化pipeline，消息处理管道"""
         raise NotImplementedError
+
+    def on_connection_ready(self, conn):
+        """连接就绪"""
+        raise NotImplementedError
+
 
     def write_complete(self):
         """
         消息发送完毕
         """
-        raise NotImplementedError
+        pass
