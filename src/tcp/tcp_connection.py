@@ -1,10 +1,9 @@
 # encoding=utf8
-
-import loop_decorator
-import socket_warp
-import channel
-import buffer
 import time
+from src.net.socket_warp import ClientSocket
+from src.net.channel import Channel
+from src.util.buffer import Buffer
+from src.util.loop_deco import RunInLoop
 
 
 class TcpConnectionState(object):
@@ -18,13 +17,12 @@ class TcpConnection(object):
     每一个client socket 对应一个tcp connection
     """
 
-    def __init__(self, loop, conn_socket, conn_key, logger):
+    def __init__(self, loop, conn_socket, conn_key):
         self._loop = loop
-        self._logger = logger
         self.conn_key = conn_key
-        self.socket = socket_warp.ClientSocket(self._logger, conn_socket)
+        self.socket = ClientSocket(conn_socket)
 
-        self.channel = channel.Channel(loop, self.socket.fd)
+        self.channel = Channel(loop, self.socket.fd)
         self.channel.add_loop()
 
         self.channel.set_read_callback(self.handle_read)
@@ -34,32 +32,33 @@ class TcpConnection(object):
         self.channel.need_write = False
         self.channel.set_error_callback(self.handle_error)
 
-        self.read_buffer = buffer.Buffer()
-        self.output_buffer = buffer.Buffer()
+        self.read_buffer = Buffer()
+        self.output_buffer = Buffer()
 
         self.state = TcpConnectionState.CONNECTED
 
-        self.message_callback = None
         self.write_complete_callback = None
         self.close_callback = None
+
+        self.ctx = None
 
         # 上次接收到客户端心跳的时间
         self.last_recv_heart_time = time.time()
 
-    @loop_decorator.RunInLoop
+    @RunInLoop
     def send(self, data):
-        # 发送数据（主动调用），不一定能发送完
-        # 1）客户端往服务端发送消息；2）服务端消息分发
-        import codec
-        try:
-            encode = codec.Protocol_Codec()  # 自定义协议的编解码器
-            data = encode.encode(data)  # 编码
-        except Exception, e:
-            self._logger.write_log(e.message, 'error')
+        """发送数据，一次不一定发送完全
+        data 协议编码str
+        """
+        if not data or not isinstance(data, str):
+            LOG.error("send error, data can't send")
             return
+
         sent_count, is_close = self.socket.send(data)
         if is_close:
-            self.handle_close()
+            if self.state != TcpConnectionState.DISCONNECTED: 
+                self.handle_close()
+            return
 
         if sent_count < len(data):
             # 剩余为发送内容放入output_buffer
@@ -69,7 +68,7 @@ class TcpConnection(object):
             # 发送完全
             self.write_complete_callback()
 
-    @loop_decorator.RunInLoop
+    @RunInLoop
     def shutdown(self):
         if self.state != TcpConnectionState.CONNECTED:
             return
@@ -83,7 +82,6 @@ class TcpConnection(object):
         """
         读就绪回调
         """
-        import codec
 
         recv_data, is_close = self.socket.recv(65535)
         if is_close:
@@ -92,28 +90,22 @@ class TcpConnection(object):
 
         self.read_buffer.append(recv_data)
 
-        codec = codec.Protocol_Codec()  # 自定义协议编解码器
-
-        while True:
-            try:
-                command, packet = codec.decode(self.read_buffer)
-
-                if not command and not packet:
-                    break
-                if self.message_callback:
-                    # 消息就绪回调
-                    self.message_callback(self, command, packet)
-            except Exception, e:
-                #  解码异常，关闭客户端连接
-                self._logger.write_log(e.message, 'error')
-                self.handle_close()
-                break
+        if self.ctx:
+            splitter = self.ctx.get_splitter()
+            if splitter:
+                while True:
+                    res = splitter.handle_read(self.ctx, self.read_buffer)
+                    if not res:
+                        break
+                    self.ctx.pipe.inbound_process(self.ctx, self.read_buffer)
+            else:
+                self.ctx.pipe.inbound_process(self.ctx, self.read_buffer)
 
     def handle_write(self):
         """
         channel.need_write 时会被调用（数据为发送完全就会设置此回调在就绪的时候继续发送）
         """
-        assert isinstance(self.output_buffer, buffer.Buffer)
+        assert isinstance(self.output_buffer, Buffer)
 
         sent_data = self.output_buffer.get_all()
         sent_count, is_close = self.socket.send(sent_data)
@@ -134,7 +126,7 @@ class TcpConnection(object):
             self.output_buffer.add_read_index(sent_count)
 
     def handle_error(self):
-        self._logger.write_log('connection error while fd is listened by poller','error')
+        LOG.error('connection error while fd is listened by poller')
         self.handle_close()
 
     def handle_close(self):
@@ -146,14 +138,10 @@ class TcpConnection(object):
 
         self.channel.close()  # 将channel从poller中移除
         self.state = TcpConnectionState.DISCONNECTED
-        self._logger.write_log('Client: ' + self.conn_key + ' close !', 'error')
 
     def set_close_callback(self, method):
         # connection_map中移除tcp_conn
         self.close_callback = method
-
-    def set_message_callback(self, method):
-        self.message_callback = method
 
     def set_write_complete_callback(self, method):
         self.write_complete_callback = method

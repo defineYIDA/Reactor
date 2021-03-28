@@ -7,30 +7,30 @@ class Dispatcher:
     """
 
     def __init__(self):
-        self._eventHandlerDict = {}
+        self._eventHandler_dict = {}
 
-    def HandlerEvent(self, command, conn, msg):
+    def handler_event(self, command, conn, msg):
         """
         根据Command 进行事件分发
         """
-        if self._eventHandlerDict.has_key(command):
-            self._eventHandlerDict[command](conn, msg)
+        if command in self._eventHandler_dict:
+            self._eventHandler_dict[command](conn, msg)
 
-    def RegisterHandler(self, command, handler):
+    def register_handler(self, command, handler):
         """
         注册处理函数
         """
-        if self._eventHandlerDict.has_key(command):
-            self._eventHandlerDict[command] = handler
+        if command in self._eventHandler_dict:
+            self._eventHandler_dict[command] = handler
         else:
-            self._eventHandlerDict[command] = handler
+            self._eventHandler_dict[command] = handler
 
-    def RemoveHandler(self, command):
+    def remove_handler(self, command):
         """
         移除处理函数
         """
-        if self._eventHandlerDict.has_key(command):
-            self._eventHandlerDict.pop(command)
+        if command in self._eventHandler_dict:
+            self._eventHandler_dict.pop(command)
 
 
 # 单例

@@ -35,24 +35,31 @@ class Buffer(object):
         # 标识写指针
         self.write_index += len(data)
 
-    def read(self, size):
+    def read(self, size, s_index=0):
+        """
+        读取数据
+        :param size: 读取长度
+        :param s_index: 读取的起始位置，相对于read_index
+        :return:
+        """
         assert size >= 0 and self.read_index <= self.write_index
+        assert 0 <= s_index <= self.write_index - self.read_index
 
-        real_size = min(size, self.write_index - self.read_index)
+        real_size = min(size, self.write_index - s_index)
         if real_size == 0:
             return ''
 
-        self._buf.seek(self.read_index, 0)
-        buff = self._buf.read(real_size)
-        self._buf.seek(self.read_index, 0)  # 恢复
-
-        return buff
+        # 起始位置为相对于read_index偏移s_index的位置
+        self._buf.seek(self.read_index + s_index)
+        buf = self._buf.read(real_size)
+        self._buf.seek(self.read_index)
+        return buf
 
     def get_all(self):
         """
         一次性将缓冲区数据全部发送
         """
-        self._buf.seek(self.read_index, 0)
+        self._buf.seek(self.read_index)
         return self._buf.read()
 
     def add_read_index(self, count):
@@ -65,25 +72,3 @@ class Buffer(object):
             self.read_index = self.write_index
         if self.read_index == self.write_index and self.write_index > self._max_size:
             self.reset()
-
-if __name__ == '__main__':
-    buffer = StringIO()
-    buffer.write("12345678910")
-    print buffer.tell()
-    print buffer.read()
-    print buffer.getvalue()
-    print buffer.tell()
-    print '*' * 20
-    buffer.seek(0)
-    print buffer.tell()
-    print buffer.read()
-    print buffer.tell()
-    print '*' * 20
-    buffer.seek(0)
-    print buffer.read(4)
-    print buffer.tell()
-    buffer.seek(6)
-    buffer.truncate()  # 无参从读写位置起切断数据，参数size开始裁剪的位置，裁剪完后读写位置改变
-    print buffer.tell()
-    print buffer.read()
-    print buffer.getvalue()

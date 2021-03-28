@@ -1,0 +1,304 @@
+2020-08-05 00:48:59,115	34724	INFO	F:\Untiy Projects\netease\Server\src\net\socket_warp.py:50	Listen:('', 8080)successful !
+2020-08-05 00:49:13,660	34724	INFO	F:\Untiy Projects\netease\Server\src\tcp\tcp_server.py:45	new conn('127.0.0.1', 62058)
+2020-08-05 00:50:13,318	34724	INFO	F:\Untiy Projects\netease\Server\src\tcp\tcp_server.py:45	new conn('127.0.0.1', 62082)
+2020-08-05 00:52:01,809	34724	ERROR	F:\Untiy Projects\netease\Server\src\tcp\tcp_connection.py:108	unbound method calculate_gold() must be called with GameLogic instance as first argument (got int instance instead)
+2020-08-05 00:52:01,811	34724	ERROR	F:\Untiy Projects\netease\Server\src\tcp\tcp_connection.py:149	Client: ('', 8080)#('127.0.0.1', 62082)#1596559813.32 close !
+2020-08-05 00:52:15,417	34724	ERROR	F:\Untiy Projects\netease\Server\src\tcp\tcp_connection.py:149	Client: ('', 8080)#('127.0.0.1', 62058)#1596559753.64 close !
+2020-08-05 00:57:08,674	34724	INFO	F:\Untiy Projects\netease\Server\src\tcp\tcp_server.py:45	new conn('127.0.0.1', 62177)
+2020-08-05 00:57:37,138	34724	ERROR	F:\Untiy Projects\netease\Server\src\tcp\tcp_connection.py:149	Client: ('', 8080)#('127.0.0.1', 62177)#1596560228.67 close !
+2020-08-05 00:57:46,335	34724	INFO	F:\Untiy Projects\netease\Server\src\tcp\tcp_server.py:45	new conn('127.0.0.1', 62178)
+2020-08-05 00:59:43,941	34724	ERROR	F:\Untiy Projects\netease\Server\src\tcp\tcp_connection.py:108	unbound method calculate_gold() must be called with GameLogic instance as first argument (got int instance instead)
+2020-08-05 01:02:47,960	34404	INFO	F:\Untiy Projects\netease\Server\src\net\socket_warp.py:50	Listen:('', 8080)successful !
+2020-08-05 01:03:32,901	34404	INFO	F:\Untiy Projects\netease\Server\src\tcp\tcp_server.py:45	new conn('127.0.0.1', 62210)
+2020-08-05 01:03:49,349	34404	ERROR	F:\Untiy Projects\netease\Server\src\tcp\tcp_connection.py:149	Client: ('', 8080)#('127.0.0.1', 62210)#1596560612.9 close !
+2020-08-05 01:03:51,302	34404	INFO	F:\Untiy Projects\netease\Server\src\tcp\tcp_server.py:45	new conn('127.0.0.1', 62215)
+2020-08-05 01:05:09,627	34404	ERROR	F:\Untiy Projects\netease\Server\src\tcp\tcp_connection.py:108	unbound method calculate_gold() must be called with GameLogic instance as first argument (got int instance instead)
+2020-08-05 01:05:09,627	34404	ERROR	F:\Untiy Projects\netease\Server\src\tcp\tcp_connection.py:149	Client: ('', 8080)#('127.0.0.1', 62215)#1596560631.3 close !
+2020-08-05 01:12:09,233	36368	INFO	F:\Untiy Projects\netease\Server\src\net\socket_warp.py:50	Listen:('', 8080)successful !
+2020-08-05 01:12:36,891	36368	INFO	F:\Untiy Projects\netease\Server\src\tcp\tcp_server.py:45	new conn('127.0.0.1', 62254)
+2020-08-05 01:13:57,493	36368	ERROR	F:\Untiy Projects\netease\Server\src\tcp\tcp_connection.py:149	Client: ('', 8080)#('127.0.0.1', 62254)#1596561156.89 close !
+2020-08-05 01:16:09,785	37792	INFO	F:\Untiy Projects\netease\Server\src\net\socket_warp.py:50	Listen:('', 8080)successful !
+2020-08-05 01:17:45,374	37792	INFO	F:\Untiy Projects\netease\Server\src\tcp\tcp_server.py:45	new conn('127.0.0.1', 62291)
+2020-08-05 01:24:02,447	40220	INFO	F:\Untiy Projects\netease\Server\src\net\socket_warp.py:50	Listen:('', 8080)successful !
+2020-08-05 01:24:06,578	40220	INFO	F:\Untiy Projects\netease\Server\src\tcp\tcp_server.py:45	new conn('127.0.0.1', 62421)
+2020-08-05 01:25:03,107	40220	ERROR	F:\Untiy Projects\netease\Server\src\tcp\tcp_connection.py:149	Client: ('', 8080)#('127.0.0.1', 62421)#1596561846.58 close !
+2020-08-05 01:25:30,461	40220	INFO	F:\Untiy Projects\netease\Server\src\tcp\tcp_server.py:45	new conn('127.0.0.1', 62426)
+2020-08-05 01:27:38,953	40220	ERROR	F:\Untiy Projects\netease\Server\src\tcp\tcp_connection.py:149	Client: ('', 8080)#('127.0.0.1', 62426)#1596561930.46 close !
+2020-08-05 01:30:57,239	41592	INFO	F:\Untiy Projects\netease\Server\src\net\socket_warp.py:50	Listen:('', 8080)successful !
+2020-08-05 01:31:11,012	41592	INFO	F:\Untiy Projects\netease\Server\src\tcp\tcp_server.py:45	new conn('127.0.0.1', 62466)
+2020-08-05 01:40:46,532	35376	INFO	F:\Untiy Projects\netease\Server\src\net\socket_warp.py:50	Listen:('', 8080)successful !
+2020-08-05 01:40:58,921	35376	INFO	F:\Untiy Projects\netease\Server\src\tcp\tcp_server.py:45	new conn('127.0.0.1', 62497)
+2020-08-05 01:42:40,915	35376	ERROR	F:\Untiy Projects\netease\Server\src\tcp\tcp_connection.py:149	Client: ('', 8080)#('127.0.0.1', 62497)#1596562858.92 close !
+2020-08-05 01:50:51,089	35376	INFO	F:\Untiy Projects\netease\Server\src\tcp\tcp_server.py:45	new conn('127.0.0.1', 62578)
+2020-08-05 01:51:07,407	35376	INFO	F:\Untiy Projects\netease\Server\src\tcp\tcp_server.py:45	new conn('127.0.0.1', 62586)
+2020-08-05 01:53:22,484	35376	ERROR	F:\Untiy Projects\netease\Server\src\tcp\tcp_connection.py:149	Client: ('', 8080)#('127.0.0.1', 62586)#1596563467.41 close !
+2020-08-05 01:53:24,144	35376	ERROR	F:\Untiy Projects\netease\Server\src\tcp\tcp_connection.py:149	Client: ('', 8080)#('127.0.0.1', 62578)#1596563451.09 close !
+2020-08-05 01:54:41,367	35376	INFO	F:\Untiy Projects\netease\Server\src\tcp\tcp_server.py:45	new conn('127.0.0.1', 62681)
+2020-08-05 01:54:46,230	35376	INFO	F:\Untiy Projects\netease\Server\src\tcp\tcp_server.py:45	new conn('127.0.0.1', 62682)
+2020-08-05 01:54:58,161	35376	ERROR	F:\Untiy Projects\netease\Server\src\tcp\tcp_connection.py:149	Client: ('', 8080)#('127.0.0.1', 62681)#1596563681.37 close !
+2020-08-05 01:55:00,197	35376	INFO	F:\Untiy Projects\netease\Server\src\tcp\tcp_server.py:45	new conn('127.0.0.1', 62686)
+2020-08-05 01:56:31,859	35376	ERROR	F:\Untiy Projects\netease\Server\src\tcp\tcp_connection.py:149	Client: ('', 8080)#('127.0.0.1', 62686)#1596563700.2 close !
+2020-08-05 01:57:14,078	35376	ERROR	F:\Untiy Projects\netease\Server\src\tcp\tcp_connection.py:149	Client: ('', 8080)#('127.0.0.1', 62682)#1596563686.23 close !
+2020-08-05 01:57:57,562	35376	INFO	F:\Untiy Projects\netease\Server\src\tcp\tcp_server.py:45	new conn('127.0.0.1', 62701)
+2020-08-05 01:58:00,476	35376	INFO	F:\Untiy Projects\netease\Server\src\tcp\tcp_server.py:45	new conn('127.0.0.1', 62704)
+2020-08-05 01:59:07,313	35376	ERROR	F:\Untiy Projects\netease\Server\src\tcp\tcp_connection.py:149	Client: ('', 8080)#('127.0.0.1', 62704)#1596563880.47 close !
+2020-08-05 01:59:25,326	35376	ERROR	F:\Untiy Projects\netease\Server\src\tcp\tcp_connection.py:149	Client: ('', 8080)#('127.0.0.1', 62701)#1596563877.56 close !
+2020-08-05 02:05:52,365	35376	INFO	F:\Untiy Projects\netease\Server\src\tcp\tcp_server.py:45	new conn('127.0.0.1', 63540)
+2020-08-05 02:05:56,977	35376	INFO	F:\Untiy Projects\netease\Server\src\tcp\tcp_server.py:45	new conn('127.0.0.1', 63543)
+2020-08-05 02:08:06,880	35376	ERROR	F:\Untiy Projects\netease\Server\src\tcp\tcp_connection.py:149	Client: ('', 8080)#('127.0.0.1', 63543)#1596564356.98 close !
+2020-08-05 02:08:08,322	35376	ERROR	F:\Untiy Projects\netease\Server\src\tcp\tcp_connection.py:149	Client: ('', 8080)#('127.0.0.1', 63540)#1596564352.37 close !
+2020-08-05 02:16:08,992	39368	INFO	F:\Untiy Projects\netease\Server\src\net\socket_warp.py:50	Listen:('', 8080)successful !
+2020-08-05 02:16:16,734	39368	INFO	F:\Untiy Projects\netease\Server\src\tcp\tcp_server.py:45	new conn('127.0.0.1', 63602)
+2020-08-05 02:16:21,698	39368	INFO	F:\Untiy Projects\netease\Server\src\tcp\tcp_server.py:45	new conn('127.0.0.1', 63606)
+2020-08-05 02:16:31,703	39368	ERROR	F:\Untiy Projects\netease\Server\src\tcp\tcp_connection.py:149	Client: ('', 8080)#('127.0.0.1', 63606)#1596564981.7 close !
+2020-08-05 02:16:33,348	39368	ERROR	F:\Untiy Projects\netease\Server\src\tcp\tcp_connection.py:149	Client: ('', 8080)#('127.0.0.1', 63602)#1596564976.73 close !
+2020-08-05 02:16:39,144	39368	INFO	F:\Untiy Projects\netease\Server\src\tcp\tcp_server.py:45	new conn('127.0.0.1', 63610)
+2020-08-05 02:16:44,086	39368	INFO	F:\Untiy Projects\netease\Server\src\tcp\tcp_server.py:45	new conn('127.0.0.1', 63613)
+2020-08-05 02:17:59,065	39368	ERROR	F:\Untiy Projects\netease\Server\src\tcp\tcp_connection.py:149	Client: ('', 8080)#('127.0.0.1', 63613)#1596565004.09 close !
+2020-08-05 02:18:00,644	39368	ERROR	F:\Untiy Projects\netease\Server\src\tcp\tcp_connection.py:149	Client: ('', 8080)#('127.0.0.1', 63610)#1596564999.14 close !
+2020-08-05 02:21:06,440	42916	INFO	F:\Untiy Projects\netease\Server\src\net\socket_warp.py:50	Listen:('', 8080)successful !
+2020-08-05 02:21:13,904	42916	INFO	F:\Untiy Projects\netease\Server\src\tcp\tcp_server.py:45	new conn('127.0.0.1', 63649)
+2020-08-05 02:21:18,579	42916	INFO	F:\Untiy Projects\netease\Server\src\tcp\tcp_server.py:45	new conn('127.0.0.1', 63652)
+2020-08-05 02:23:32,082	42916	ERROR	F:\Untiy Projects\netease\Server\src\tcp\tcp_connection.py:149	Client: ('', 8080)#('127.0.0.1', 63652)#1596565278.58 close !
+2020-08-05 02:23:33,677	42916	ERROR	F:\Untiy Projects\netease\Server\src\tcp\tcp_connection.py:149	Client: ('', 8080)#('127.0.0.1', 63649)#1596565273.9 close !
+2020-08-05 02:28:37,631	42916	INFO	F:\Untiy Projects\netease\Server\src\tcp\tcp_server.py:45	new conn('127.0.0.1', 63811)
+2020-08-05 02:28:50,161	42916	INFO	F:\Untiy Projects\netease\Server\src\tcp\tcp_server.py:45	new conn('127.0.0.1', 63815)
+2020-08-05 02:34:41,874	42132	INFO	F:\Untiy Projects\netease\Server\src\net\socket_warp.py:50	Listen:('', 8080)successful !
+2020-08-05 02:34:47,349	42132	INFO	F:\Untiy Projects\netease\Server\src\tcp\tcp_server.py:45	new conn('127.0.0.1', 63854)
+2020-08-05 02:34:51,990	42132	INFO	F:\Untiy Projects\netease\Server\src\tcp\tcp_server.py:45	new conn('127.0.0.1', 63857)
+2020-08-05 02:43:46,776	45120	INFO	F:\Untiy Projects\netease\Server\src\net\socket_warp.py:50	Listen:('', 8080)successful !
+2020-08-05 02:43:50,974	45120	INFO	F:\Untiy Projects\netease\Server\src\tcp\tcp_server.py:45	new conn('127.0.0.1', 64185)
+2020-08-05 02:43:55,898	45120	INFO	F:\Untiy Projects\netease\Server\src\tcp\tcp_server.py:45	new conn('127.0.0.1', 64188)
+2020-08-05 02:44:41,529	45120	ERROR	F:\Untiy Projects\netease\Server\src\tcp\tcp_connection.py:149	Client: ('', 8080)#('127.0.0.1', 64188)#1596566635.9 close !
+2020-08-05 02:44:42,816	45120	ERROR	F:\Untiy Projects\netease\Server\src\tcp\tcp_connection.py:149	Client: ('', 8080)#('127.0.0.1', 64185)#1596566630.97 close !
+2020-08-05 02:45:10,834	45120	INFO	F:\Untiy Projects\netease\Server\src\tcp\tcp_server.py:45	new conn('127.0.0.1', 64194)
+2020-08-05 02:45:52,858	45120	ERROR	F:\Untiy Projects\netease\Server\src\tcp\tcp_connection.py:149	Client: ('', 8080)#('127.0.0.1', 64194)#1596566710.83 close !
+2020-08-05 02:46:34,500	45120	INFO	F:\Untiy Projects\netease\Server\src\tcp\tcp_server.py:45	new conn('127.0.0.1', 64227)
+2020-08-05 02:48:26,602	45120	ERROR	F:\Untiy Projects\netease\Server\src\tcp\tcp_connection.py:149	Client: ('', 8080)#('127.0.0.1', 64227)#1596566794.5 close !
+2020-08-05 02:48:28,404	45120	INFO	F:\Untiy Projects\netease\Server\src\tcp\tcp_server.py:45	new conn('127.0.0.1', 64235)
+2020-08-05 02:50:43,948	45120	ERROR	F:\Untiy Projects\netease\Server\src\tcp\tcp_connection.py:149	Client: ('', 8080)#('127.0.0.1', 64235)#1596566908.4 close !
+2020-08-05 02:51:22,358	45120	INFO	F:\Untiy Projects\netease\Server\src\tcp\tcp_server.py:45	new conn('127.0.0.1', 64262)
+2020-08-05 02:51:55,302	45120	ERROR	F:\Untiy Projects\netease\Server\src\tcp\tcp_connection.py:149	Client: ('', 8080)#('127.0.0.1', 64262)#1596567082.36 close !
+2020-08-05 02:52:53,296	45120	INFO	F:\Untiy Projects\netease\Server\src\tcp\tcp_server.py:45	new conn('127.0.0.1', 64266)
+2020-08-05 02:53:16,816	45120	ERROR	F:\Untiy Projects\netease\Server\src\tcp\tcp_connection.py:149	Client: ('', 8080)#('127.0.0.1', 64266)#1596567173.3 close !
+2020-08-05 02:53:53,789	45120	INFO	F:\Untiy Projects\netease\Server\src\tcp\tcp_server.py:45	new conn('127.0.0.1', 64288)
+2020-08-05 02:54:44,680	45120	ERROR	F:\Untiy Projects\netease\Server\src\tcp\tcp_connection.py:149	Client: ('', 8080)#('127.0.0.1', 64288)#1596567233.79 close !
+2020-08-05 02:58:54,950	45120	INFO	F:\Untiy Projects\netease\Server\src\tcp\tcp_server.py:45	new conn('127.0.0.1', 64371)
+2020-08-05 02:59:42,371	45120	ERROR	F:\Untiy Projects\netease\Server\src\tcp\tcp_connection.py:149	Client: ('', 8080)#('127.0.0.1', 64371)#1596567534.95 close !
+2020-08-05 02:59:58,006	45120	INFO	F:\Untiy Projects\netease\Server\src\tcp\tcp_server.py:45	new conn('127.0.0.1', 64378)
+2020-08-05 03:00:28,961	45120	ERROR	F:\Untiy Projects\netease\Server\src\tcp\tcp_connection.py:149	Client: ('', 8080)#('127.0.0.1', 64378)#1596567598.01 close !
+2020-08-05 03:00:44,979	45120	INFO	F:\Untiy Projects\netease\Server\src\tcp\tcp_server.py:45	new conn('127.0.0.1', 64382)
+2020-08-05 03:01:15,269	45120	ERROR	F:\Untiy Projects\netease\Server\src\tcp\tcp_connection.py:149	Client: ('', 8080)#('127.0.0.1', 64382)#1596567644.98 close !
+2020-08-05 03:02:06,759	45120	INFO	F:\Untiy Projects\netease\Server\src\tcp\tcp_server.py:45	new conn('127.0.0.1', 64495)
+2020-08-05 03:02:36,484	45120	ERROR	F:\Untiy Projects\netease\Server\src\tcp\tcp_connection.py:149	Client: ('', 8080)#('127.0.0.1', 64495)#1596567726.76 close !
+2020-08-05 03:03:42,625	45120	INFO	F:\Untiy Projects\netease\Server\src\tcp\tcp_server.py:45	new conn('127.0.0.1', 64503)
+2020-08-05 03:04:13,459	45120	ERROR	F:\Untiy Projects\netease\Server\src\tcp\tcp_connection.py:149	Client: ('', 8080)#('127.0.0.1', 64503)#1596567822.63 close !
+2020-08-05 03:11:07,793	45120	INFO	F:\Untiy Projects\netease\Server\src\tcp\tcp_server.py:45	new conn('127.0.0.1', 64664)
+2020-08-05 03:12:18,983	45120	ERROR	F:\Untiy Projects\netease\Server\src\tcp\tcp_connection.py:149	Client: ('', 8080)#('127.0.0.1', 64664)#1596568267.79 close !
+2020-08-05 03:12:20,780	45120	INFO	F:\Untiy Projects\netease\Server\src\tcp\tcp_server.py:45	new conn('127.0.0.1', 64670)
+2020-08-05 03:12:53,943	45120	ERROR	F:\Untiy Projects\netease\Server\src\tcp\tcp_connection.py:149	Client: ('', 8080)#('127.0.0.1', 64670)#1596568340.78 close !
+2020-08-05 03:15:21,301	45120	INFO	F:\Untiy Projects\netease\Server\src\tcp\tcp_server.py:45	new conn('127.0.0.1', 65043)
+2020-08-05 03:15:50,223	45120	ERROR	F:\Untiy Projects\netease\Server\src\tcp\tcp_connection.py:149	Client: ('', 8080)#('127.0.0.1', 65043)#1596568521.3 close !
+2020-08-05 03:17:58,944	45120	INFO	F:\Untiy Projects\netease\Server\src\tcp\tcp_server.py:45	new conn('127.0.0.1', 65076)
+2020-08-05 03:18:21,328	45120	ERROR	F:\Untiy Projects\netease\Server\src\tcp\tcp_connection.py:149	Client: ('', 8080)#('127.0.0.1', 65076)#1596568678.94 close !
+2020-08-05 03:18:35,252	45120	INFO	F:\Untiy Projects\netease\Server\src\tcp\tcp_server.py:45	new conn('127.0.0.1', 65077)
+2020-08-05 03:20:38,947	45120	ERROR	F:\Untiy Projects\netease\Server\src\tcp\tcp_connection.py:149	Client: ('', 8080)#('127.0.0.1', 65077)#1596568715.25 close !
+2020-08-05 03:23:28,476	45120	INFO	F:\Untiy Projects\netease\Server\src\tcp\tcp_server.py:45	new conn('127.0.0.1', 65138)
+2020-08-05 03:24:58,516	45120	ERROR	F:\Untiy Projects\netease\Server\src\tcp\tcp_connection.py:149	Client: ('', 8080)#('127.0.0.1', 65138)#1596569008.48 close !
+2020-08-05 03:39:49,907	45120	INFO	F:\Untiy Projects\netease\Server\src\tcp\tcp_server.py:45	new conn('127.0.0.1', 65271)
+2020-08-05 03:41:44,125	45120	ERROR	F:\Untiy Projects\netease\Server\src\tcp\tcp_connection.py:149	Client: ('', 8080)#('127.0.0.1', 65271)#1596569989.91 close !
+2020-08-05 03:47:56,089	45120	INFO	F:\Untiy Projects\netease\Server\src\tcp\tcp_server.py:45	new conn('127.0.0.1', 65326)
+2020-08-05 03:49:58,576	45120	ERROR	F:\Untiy Projects\netease\Server\src\tcp\tcp_connection.py:149	Client: ('', 8080)#('127.0.0.1', 65326)#1596570476.09 close !
+2020-08-05 03:56:48,437	45120	INFO	F:\Untiy Projects\netease\Server\src\tcp\tcp_server.py:45	new conn('127.0.0.1', 65392)
+2020-08-05 03:58:38,121	45120	ERROR	F:\Untiy Projects\netease\Server\src\tcp\tcp_connection.py:149	Client: ('', 8080)#('127.0.0.1', 65392)#1596571008.44 close !
+2020-08-05 04:02:28,624	45120	INFO	F:\Untiy Projects\netease\Server\src\tcp\tcp_server.py:45	new conn('127.0.0.1', 65470)
+2020-08-05 04:03:52,934	45120	ERROR	F:\Untiy Projects\netease\Server\src\tcp\tcp_connection.py:149	Client: ('', 8080)#('127.0.0.1', 65470)#1596571348.62 close !
+2020-08-05 04:09:44,266	45120	INFO	F:\Untiy Projects\netease\Server\src\tcp\tcp_server.py:45	new conn('127.0.0.1', 65492)
+2020-08-05 04:11:38,388	45120	ERROR	F:\Untiy Projects\netease\Server\src\tcp\tcp_connection.py:149	Client: ('', 8080)#('127.0.0.1', 65492)#1596571784.27 close !
+2020-08-05 04:13:11,757	45120	INFO	F:\Untiy Projects\netease\Server\src\tcp\tcp_server.py:45	new conn('127.0.0.1', 65512)
+2020-08-05 04:14:36,625	45120	ERROR	F:\Untiy Projects\netease\Server\src\tcp\tcp_connection.py:149	Client: ('', 8080)#('127.0.0.1', 65512)#1596571991.76 close !
+2020-08-05 04:17:30,888	45120	INFO	F:\Untiy Projects\netease\Server\src\tcp\tcp_server.py:45	new conn('127.0.0.1', 49153)
+2020-08-05 04:18:40,841	45120	ERROR	F:\Untiy Projects\netease\Server\src\tcp\tcp_connection.py:149	Client: ('', 8080)#('127.0.0.1', 49153)#1596572250.89 close !
+2020-08-05 04:31:57,556	51924	INFO	F:\Untiy Projects\netease\Server\src\net\socket_warp.py:50	Listen:('', 8080)successful !
+2020-08-05 04:31:58,296	51924	INFO	F:\Untiy Projects\netease\Server\src\tcp\tcp_server.py:45	new conn('127.0.0.1', 49321)
+2020-08-05 04:32:02,295	51924	ERROR	F:\Untiy Projects\netease\Server\src\tcp\tcp_connection.py:149	Client: ('', 8080)#('127.0.0.1', 49321)#1596573118.3 close !
+2020-08-05 04:32:04,835	51924	INFO	F:\Untiy Projects\netease\Server\src\tcp\tcp_server.py:45	new conn('127.0.0.1', 49322)
+2020-08-05 04:32:19,095	51924	ERROR	F:\Untiy Projects\netease\Server\src\tcp\tcp_connection.py:149	Client: ('', 8080)#('127.0.0.1', 49322)#1596573124.84 close !
+2020-08-05 04:32:20,733	51924	INFO	F:\Untiy Projects\netease\Server\src\tcp\tcp_server.py:45	new conn('127.0.0.1', 49323)
+2020-08-05 04:33:00,532	51924	ERROR	F:\Untiy Projects\netease\Server\src\tcp\tcp_connection.py:149	Client: ('', 8080)#('127.0.0.1', 49323)#1596573140.73 close !
+2020-08-05 04:34:37,703	51924	INFO	F:\Untiy Projects\netease\Server\src\tcp\tcp_server.py:45	new conn('127.0.0.1', 49333)
+2020-08-05 04:35:48,157	51924	ERROR	F:\Untiy Projects\netease\Server\src\tcp\tcp_connection.py:149	Client: ('', 8080)#('127.0.0.1', 49333)#1596573277.7 close !
+2020-08-05 04:37:18,210	51924	INFO	F:\Untiy Projects\netease\Server\src\tcp\tcp_server.py:45	new conn('127.0.0.1', 49342)
+2020-08-05 04:37:28,197	51924	ERROR	F:\Untiy Projects\netease\Server\src\tcp\tcp_connection.py:149	Client: ('', 8080)#('127.0.0.1', 49342)#1596573438.21 close !
+2020-08-05 04:37:30,875	51924	INFO	F:\Untiy Projects\netease\Server\src\tcp\tcp_server.py:45	new conn('127.0.0.1', 49343)
+2020-08-05 04:37:46,285	51924	ERROR	F:\Untiy Projects\netease\Server\src\tcp\tcp_connection.py:149	Client: ('', 8080)#('127.0.0.1', 49343)#1596573450.87 close !
+2020-08-05 04:37:48,134	51924	INFO	F:\Untiy Projects\netease\Server\src\tcp\tcp_server.py:45	new conn('127.0.0.1', 49345)
+2020-08-05 04:38:24,828	51924	ERROR	F:\Untiy Projects\netease\Server\src\tcp\tcp_connection.py:149	Client: ('', 8080)#('127.0.0.1', 49345)#1596573468.13 close !
+2020-08-05 04:41:58,845	51924	INFO	F:\Untiy Projects\netease\Server\src\tcp\tcp_server.py:45	new conn('127.0.0.1', 49360)
+2020-08-05 04:46:04,744	51924	ERROR	F:\Untiy Projects\netease\Server\src\tcp\tcp_connection.py:149	Client: ('', 8080)#('127.0.0.1', 49360)#1596573718.85 close !
+2020-08-05 04:46:13,417	51924	INFO	F:\Untiy Projects\netease\Server\src\tcp\tcp_server.py:45	new conn('127.0.0.1', 49394)
+2020-08-05 04:46:43,270	51924	ERROR	F:\Untiy Projects\netease\Server\src\tcp\tcp_connection.py:149	Client: ('', 8080)#('127.0.0.1', 49394)#1596573973.42 close !
+2020-08-05 04:47:00,230	51924	INFO	F:\Untiy Projects\netease\Server\src\tcp\tcp_server.py:45	new conn('127.0.0.1', 49408)
+2020-08-05 04:47:23,921	51924	ERROR	F:\Untiy Projects\netease\Server\src\tcp\tcp_connection.py:149	Client: ('', 8080)#('127.0.0.1', 49408)#1596574020.23 close !
+2020-08-05 04:47:35,088	51924	INFO	F:\Untiy Projects\netease\Server\src\tcp\tcp_server.py:45	new conn('127.0.0.1', 49410)
+2020-08-05 04:47:54,678	51924	ERROR	F:\Untiy Projects\netease\Server\src\tcp\tcp_connection.py:149	Client: ('', 8080)#('127.0.0.1', 49410)#1596574055.09 close !
+2020-08-05 04:48:02,844	51924	INFO	F:\Untiy Projects\netease\Server\src\tcp\tcp_server.py:45	new conn('127.0.0.1', 49414)
+2020-08-05 04:48:31,480	51924	ERROR	F:\Untiy Projects\netease\Server\src\tcp\tcp_connection.py:149	Client: ('', 8080)#('127.0.0.1', 49414)#1596574082.84 close !
+2020-08-05 04:48:33,171	51924	INFO	F:\Untiy Projects\netease\Server\src\tcp\tcp_server.py:45	new conn('127.0.0.1', 49415)
+2020-08-05 04:49:09,063	51924	ERROR	F:\Untiy Projects\netease\Server\src\tcp\tcp_connection.py:149	Client: ('', 8080)#('127.0.0.1', 49415)#1596574113.17 close !
+2020-08-05 04:49:14,993	51924	INFO	F:\Untiy Projects\netease\Server\src\tcp\tcp_server.py:45	new conn('127.0.0.1', 49420)
+2020-08-05 04:49:50,766	51924	ERROR	F:\Untiy Projects\netease\Server\src\tcp\tcp_connection.py:149	Client: ('', 8080)#('127.0.0.1', 49420)#1596574154.99 close !
+2020-08-05 04:50:39,460	41760	INFO	F:\Untiy Projects\netease\Server\src\net\socket_warp.py:50	Listen:('', 8080)successful !
+2020-08-05 04:50:45,493	41760	INFO	F:\Untiy Projects\netease\Server\src\tcp\tcp_server.py:45	new conn('127.0.0.1', 49425)
+2020-08-05 04:51:32,180	41760	ERROR	F:\Untiy Projects\netease\Server\src\tcp\tcp_connection.py:149	Client: ('', 8080)#('127.0.0.1', 49425)#1596574245.49 close !
+2020-08-05 04:59:14,845	41760	INFO	F:\Untiy Projects\netease\Server\src\tcp\tcp_server.py:45	new conn('127.0.0.1', 49486)
+2020-08-05 05:00:29,615	41760	ERROR	F:\Untiy Projects\netease\Server\src\tcp\tcp_connection.py:149	Client: ('', 8080)#('127.0.0.1', 49486)#1596574754.85 close !
+2020-08-05 05:00:35,502	41760	INFO	F:\Untiy Projects\netease\Server\src\tcp\tcp_server.py:45	new conn('127.0.0.1', 49491)
+2020-08-05 05:02:17,776	41760	ERROR	F:\Untiy Projects\netease\Server\src\tcp\tcp_connection.py:149	Client: ('', 8080)#('127.0.0.1', 49491)#1596574835.5 close !
+2020-08-05 05:03:49,153	41760	INFO	F:\Untiy Projects\netease\Server\src\tcp\tcp_server.py:45	new conn('127.0.0.1', 49564)
+2020-08-05 05:04:40,242	41760	ERROR	F:\Untiy Projects\netease\Server\src\tcp\tcp_connection.py:149	Client: ('', 8080)#('127.0.0.1', 49564)#1596575029.15 close !
+2020-08-05 05:06:15,779	41760	INFO	F:\Untiy Projects\netease\Server\src\tcp\tcp_server.py:45	new conn('127.0.0.1', 49581)
+2020-08-05 05:06:21,890	41760	INFO	F:\Untiy Projects\netease\Server\src\tcp\tcp_server.py:45	new conn('127.0.0.1', 49585)
+2020-08-05 05:07:44,622	41760	ERROR	F:\Untiy Projects\netease\Server\src\tcp\tcp_connection.py:149	Client: ('', 8080)#('127.0.0.1', 49581)#1596575175.78 close !
+2020-08-05 05:08:09,414	41760	ERROR	F:\Untiy Projects\netease\Server\src\tcp\tcp_connection.py:149	Client: ('', 8080)#('127.0.0.1', 49585)#1596575181.89 close !
+2020-08-05 05:08:36,030	53896	INFO	F:\Untiy Projects\netease\Server\src\net\socket_warp.py:50	Listen:('', 8080)successful !
+2020-08-05 05:08:46,928	53896	INFO	F:\Untiy Projects\netease\Server\src\tcp\tcp_server.py:45	new conn('127.0.0.1', 49597)
+2020-08-05 05:08:51,505	53896	INFO	F:\Untiy Projects\netease\Server\src\tcp\tcp_server.py:45	new conn('127.0.0.1', 49602)
+2020-08-05 05:10:15,575	53896	ERROR	F:\Untiy Projects\netease\Server\src\tcp\tcp_connection.py:149	Client: ('', 8080)#('127.0.0.1', 49597)#1596575326.93 close !
+2020-08-05 09:49:06,076	12868	INFO	E:\netease\Server\src\net\socket_warp.py:50	Listen:('', 8080)successful !
+2020-08-05 09:49:16,885	12868	INFO	E:\netease\Server\src\tcp\tcp_server.py:45	new conn('127.0.0.1', 61831)
+2020-08-05 09:49:21,171	12868	INFO	E:\netease\Server\src\tcp\tcp_server.py:45	new conn('127.0.0.1', 61836)
+2020-08-05 09:49:26,734	12868	INFO	E:\netease\Server\src\tcp\tcp_server.py:45	new conn('127.0.0.1', 61839)
+2020-08-05 09:55:09,375	12868	ERROR	E:\netease\Server\src\tcp\tcp_connection.py:149	Client: ('', 8080)#('127.0.0.1', 61831)#1596592156.89 close !
+2020-08-05 09:55:10,420	12868	ERROR	E:\netease\Server\src\tcp\tcp_connection.py:149	Client: ('', 8080)#('127.0.0.1', 61836)#1596592161.17 close !
+2020-08-05 09:55:11,407	12868	ERROR	E:\netease\Server\src\tcp\tcp_connection.py:149	Client: ('', 8080)#('127.0.0.1', 61839)#1596592166.73 close !
+2020-08-05 09:58:56,303	12868	INFO	E:\netease\Server\src\tcp\tcp_server.py:45	new conn('127.0.0.1', 62202)
+2020-08-05 10:02:05,520	12868	ERROR	E:\netease\Server\src\tcp\tcp_connection.py:149	Client: ('', 8080)#('127.0.0.1', 62202)#1596592736.3 close !
+2020-08-05 10:02:21,926	12868	INFO	E:\netease\Server\src\tcp\tcp_server.py:45	new conn('127.0.0.1', 62272)
+2020-08-05 10:05:06,282	12868	ERROR	E:\netease\Server\src\tcp\tcp_connection.py:149	Client: ('', 8080)#('127.0.0.1', 62272)#1596592941.93 close !
+2020-08-05 10:07:39,339	12868	INFO	E:\netease\Server\src\tcp\tcp_server.py:45	new conn('127.0.0.1', 62610)
+2020-08-05 10:07:40,388	12868	INFO	E:\netease\Server\src\tcp\tcp_server.py:45	new conn('127.0.0.1', 62617)
+2020-08-05 10:07:43,654	12868	INFO	E:\netease\Server\src\tcp\tcp_server.py:45	new conn('127.0.0.1', 62620)
+2020-08-05 10:09:03,523	12868	ERROR	E:\netease\Server\src\tcp\tcp_connection.py:149	Client: ('', 8080)#('127.0.0.1', 62610)#1596593259.34 close !
+2020-08-05 10:09:04,434	12868	ERROR	E:\netease\Server\src\tcp\tcp_connection.py:149	Client: ('', 8080)#('127.0.0.1', 62617)#1596593260.39 close !
+2020-08-05 10:09:05,540	12868	ERROR	E:\netease\Server\src\tcp\tcp_connection.py:149	Client: ('', 8080)#('127.0.0.1', 62620)#1596593263.65 close !
+2020-08-05 10:10:00,269	20920	INFO	E:\netease\Server\src\net\socket_warp.py:50	Listen:('', 8080)successful !
+2020-08-05 10:11:09,109	20920	INFO	E:\netease\Server\src\tcp\tcp_server.py:45	new conn('127.0.0.1', 62857)
+2020-08-05 10:11:14,266	20920	INFO	E:\netease\Server\src\tcp\tcp_server.py:45	new conn('127.0.0.1', 62860)
+2020-08-05 10:11:17,983	20920	INFO	E:\netease\Server\src\tcp\tcp_server.py:45	new conn('127.0.0.1', 62863)
+2020-08-05 10:13:24,124	20920	ERROR	E:\netease\Server\src\tcp\tcp_connection.py:149	Client: ('', 8080)#('127.0.0.1', 62863)#1596593477.98 close !
+2020-08-05 10:13:25,492	20920	ERROR	E:\netease\Server\src\tcp\tcp_connection.py:149	Client: ('', 8080)#('127.0.0.1', 62860)#1596593474.27 close !
+2020-08-05 10:13:26,683	20920	ERROR	E:\netease\Server\src\tcp\tcp_connection.py:149	Client: ('', 8080)#('127.0.0.1', 62857)#1596593469.11 close !
+2020-08-05 10:13:44,858	20920	INFO	E:\netease\Server\src\tcp\tcp_server.py:45	new conn('127.0.0.1', 62894)
+2020-08-05 10:13:50,323	20920	INFO	E:\netease\Server\src\tcp\tcp_server.py:45	new conn('127.0.0.1', 62897)
+2020-08-05 10:13:55,341	20920	INFO	E:\netease\Server\src\tcp\tcp_server.py:45	new conn('127.0.0.1', 62907)
+2020-08-05 10:15:34,736	20920	ERROR	E:\netease\Server\src\tcp\tcp_connection.py:149	Client: ('', 8080)#('127.0.0.1', 62897)#1596593630.32 close !
+2020-08-05 10:15:35,782	20920	ERROR	E:\netease\Server\src\tcp\tcp_connection.py:149	Client: ('', 8080)#('127.0.0.1', 62894)#1596593624.86 close !
+2020-08-05 10:15:36,726	20920	ERROR	E:\netease\Server\src\tcp\tcp_connection.py:149	Client: ('', 8080)#('127.0.0.1', 62907)#1596593635.34 close !
+2020-08-05 10:41:48,717	20852	INFO	E:\netease\Server\src\net\socket_warp.py:50	Listen:('', 8080)successful !
+2020-08-05 10:42:27,252	20852	INFO	E:\netease\Server\src\tcp\tcp_server.py:45	new conn('127.0.0.1', 63520)
+2020-08-05 10:42:28,509	20852	INFO	E:\netease\Server\src\tcp\tcp_server.py:45	new conn('127.0.0.1', 63523)
+2020-08-05 10:42:33,128	20852	ERROR	E:\netease\Server\src\tcp\tcp_connection.py:108	222
+2020-08-05 10:42:33,128	20852	ERROR	E:\netease\Server\src\tcp\tcp_connection.py:149	Client: ('', 8080)#('127.0.0.1', 63523)#1596595348.51 close !
+2020-08-05 10:42:45,727	20852	INFO	E:\netease\Server\src\tcp\tcp_server.py:45	new conn('127.0.0.1', 63528)
+2020-08-05 10:42:47,509	20852	ERROR	E:\netease\Server\src\tcp\tcp_connection.py:108	222
+2020-08-05 10:42:47,509	20852	ERROR	E:\netease\Server\src\tcp\tcp_connection.py:149	Client: ('', 8080)#('127.0.0.1', 63528)#1596595365.73 close !
+2020-08-05 10:43:06,273	20852	ERROR	E:\netease\Server\src\tcp\tcp_connection.py:108	333
+2020-08-05 10:44:51,161	15564	INFO	E:\netease\Server\src\net\socket_warp.py:50	Listen:('', 8080)successful !
+2020-08-05 10:44:58,601	15564	INFO	E:\netease\Server\src\tcp\tcp_server.py:45	new conn('127.0.0.1', 63569)
+2020-08-05 10:45:00,433	15564	ERROR	E:\netease\Server\src\tcp\tcp_connection.py:108	222
+2020-08-05 10:45:00,434	15564	ERROR	E:\netease\Server\src\tcp\tcp_connection.py:149	Client: ('', 8080)#('127.0.0.1', 63569)#1596595498.6 close !
+2020-08-05 10:45:27,642	15564	INFO	E:\netease\Server\src\tcp\tcp_server.py:45	new conn('127.0.0.1', 63578)
+2020-08-05 10:46:04,404	17792	INFO	E:\netease\Server\src\net\socket_warp.py:50	Listen:('', 8080)successful !
+2020-08-05 10:46:12,681	17792	INFO	E:\netease\Server\src\tcp\tcp_server.py:45	new conn('127.0.0.1', 63608)
+2020-08-05 10:46:17,338	17792	ERROR	E:\netease\Server\src\tcp\tcp_connection.py:108	222
+2020-08-05 12:55:03,651	18196	INFO	E:\netease\Server\src\net\socket_warp.py:50	Listen:('', 8080)successful !
+2020-08-05 12:55:43,918	18196	INFO	E:\netease\Server\src\tcp\tcp_server.py:45	new conn('127.0.0.1', 49288)
+2020-08-05 12:55:48,181	18196	INFO	E:\netease\Server\src\tcp\tcp_server.py:45	new conn('127.0.0.1', 49293)
+2020-08-05 12:56:49,029	18196	ERROR	E:\netease\Server\src\tcp\tcp_connection.py:149	Client: ('', 8080)#('127.0.0.1', 49288)#1596603343.92 close !
+2020-08-05 12:56:49,996	18196	ERROR	E:\netease\Server\src\tcp\tcp_connection.py:149	Client: ('', 8080)#('127.0.0.1', 49293)#1596603348.18 close !
+2020-08-05 13:10:14,986	2732	INFO	E:\netease\Server\src\net\socket_warp.py:50	Listen:('', 8080)successful !
+2020-08-05 13:10:35,625	2732	INFO	E:\netease\Server\src\tcp\tcp_server.py:45	new conn('127.0.0.1', 49512)
+2020-08-05 13:10:49,299	2732	ERROR	E:\netease\Server\src\tcp\tcp_connection.py:149	Client: ('', 8080)#('127.0.0.1', 49512)#1596604235.62 close !
+2020-08-05 13:12:32,528	18004	INFO	E:\netease\Server\src\net\socket_warp.py:50	Listen:('', 8080)successful !
+2020-08-05 13:12:39,204	18004	INFO	E:\netease\Server\src\tcp\tcp_server.py:45	new conn('127.0.0.1', 49549)
+2020-08-05 13:12:53,882	18004	ERROR	E:\netease\Server\src\tcp\tcp_connection.py:149	Client: ('', 8080)#('127.0.0.1', 49549)#1596604359.2 close !
+2020-08-05 13:13:36,688	1700	INFO	E:\netease\Server\src\net\socket_warp.py:50	Listen:('', 8080)successful !
+2020-08-05 13:13:39,417	1700	INFO	E:\netease\Server\src\tcp\tcp_server.py:45	new conn('127.0.0.1', 49572)
+2020-08-05 13:14:13,332	1700	ERROR	E:\netease\Server\src\tcp\tcp_connection.py:149	Client: ('', 8080)#('127.0.0.1', 49572)#1596604419.42 close !
+2020-08-05 13:22:18,201	20572	INFO	E:\netease\Server\src\net\socket_warp.py:50	Listen:('', 8080)successful !
+2020-08-05 13:23:03,023	20572	INFO	E:\netease\Server\src\tcp\tcp_server.py:45	new conn('127.0.0.1', 49778)
+2020-08-05 13:23:06,540	20572	ERROR	E:\netease\Server\src\tcp\tcp_connection.py:108	no such column: gold
+2020-08-05 13:24:15,490	24536	INFO	E:\netease\Server\src\net\socket_warp.py:50	Listen:('', 8080)successful !
+2020-08-05 13:24:51,036	24536	INFO	E:\netease\Server\src\tcp\tcp_server.py:45	new conn('127.0.0.1', 50084)
+2020-08-05 13:24:52,293	24536	INFO	E:\netease\Server\src\tcp\tcp_server.py:45	new conn('127.0.0.1', 50088)
+2020-08-05 13:27:35,625	24536	INFO	E:\netease\Server\src\tcp\tcp_server.py:45	new conn('127.0.0.1', 50195)
+2020-08-05 13:32:20,513	24536	ERROR	E:\netease\Server\src\tcp\tcp_connection.py:149	Client: ('', 8080)#('127.0.0.1', 50088)#1596605092.29 close !
+2020-08-05 13:32:21,671	24536	ERROR	E:\netease\Server\src\tcp\tcp_connection.py:149	Client: ('', 8080)#('127.0.0.1', 50084)#1596605091.04 close !
+2020-08-05 13:43:05,256	24536	ERROR	E:\netease\Server\src\tcp\tcp_connection.py:149	Client: ('', 8080)#('127.0.0.1', 50195)#1596605255.63 close !
+2020-08-05 13:50:33,552	24536	INFO	E:\netease\Server\src\tcp\tcp_server.py:45	new conn('127.0.0.1', 50624)
+2020-08-05 13:50:36,867	24536	INFO	E:\netease\Server\src\tcp\tcp_server.py:45	new conn('127.0.0.1', 50627)
+2020-08-05 13:53:53,948	24536	ERROR	E:\netease\Server\src\tcp\tcp_connection.py:149	Client: ('', 8080)#('127.0.0.1', 50627)#1596606636.87 close !
+2020-08-05 13:53:54,967	24536	ERROR	E:\netease\Server\src\tcp\tcp_connection.py:149	Client: ('', 8080)#('127.0.0.1', 50624)#1596606633.55 close !
+2020-08-05 13:55:43,088	24536	INFO	E:\netease\Server\src\tcp\tcp_server.py:45	new conn('127.0.0.1', 50898)
+2020-08-05 13:55:44,503	24536	INFO	E:\netease\Server\src\tcp\tcp_server.py:45	new conn('127.0.0.1', 50901)
+2020-08-05 13:55:46,052	24536	INFO	E:\netease\Server\src\tcp\tcp_server.py:45	new conn('127.0.0.1', 50904)
+2020-08-05 13:56:18,743	24536	ERROR	E:\netease\Server\src\tcp\tcp_connection.py:149	Client: ('', 8080)#('127.0.0.1', 50898)#1596606943.09 close !
+2020-08-05 13:56:20,005	24536	ERROR	E:\netease\Server\src\tcp\tcp_connection.py:149	Client: ('', 8080)#('127.0.0.1', 50904)#1596606946.05 close !
+2020-08-05 13:56:21,351	24536	ERROR	E:\netease\Server\src\tcp\tcp_connection.py:149	Client: ('', 8080)#('127.0.0.1', 50901)#1596606944.5 close !
+2020-08-05 14:06:35,061	24536	INFO	E:\netease\Server\src\tcp\tcp_server.py:45	new conn('127.0.0.1', 51147)
+2020-08-05 14:07:36,608	24536	ERROR	E:\netease\Server\src\tcp\tcp_connection.py:149	Client: ('', 8080)#('127.0.0.1', 51147)#1596607595.06 close !
+2020-08-05 14:08:48,875	24536	INFO	E:\netease\Server\src\tcp\tcp_server.py:45	new conn('127.0.0.1', 51420)
+2020-08-05 14:09:31,756	24536	INFO	E:\netease\Server\src\tcp\tcp_server.py:45	new conn('127.0.0.1', 51434)
+2020-08-05 14:12:10,992	24536	ERROR	E:\netease\Server\src\tcp\tcp_connection.py:149	Client: ('', 8080)#('127.0.0.1', 51434)#1596607771.76 close !
+2020-08-05 14:12:11,911	24536	ERROR	E:\netease\Server\src\tcp\tcp_connection.py:149	Client: ('', 8080)#('127.0.0.1', 51420)#1596607728.88 close !
+2020-08-05 14:12:20,891	24536	INFO	E:\netease\Server\src\tcp\tcp_server.py:45	new conn('127.0.0.1', 51518)
+2020-08-05 14:12:22,842	24536	INFO	E:\netease\Server\src\tcp\tcp_server.py:45	new conn('127.0.0.1', 51521)
+2020-08-05 14:13:16,982	24536	ERROR	E:\netease\Server\src\tcp\tcp_connection.py:149	Client: ('', 8080)#('127.0.0.1', 51521)#1596607942.84 close !
+2020-08-05 14:13:17,967	24536	ERROR	E:\netease\Server\src\tcp\tcp_connection.py:149	Client: ('', 8080)#('127.0.0.1', 51518)#1596607940.89 close !
+2020-08-05 14:16:29,207	24536	INFO	E:\netease\Server\src\tcp\tcp_server.py:45	new conn('127.0.0.1', 51582)
+2020-08-05 14:18:26,306	24536	INFO	E:\netease\Server\src\tcp\tcp_server.py:45	new conn('127.0.0.1', 51608)
+2020-08-05 14:20:45,325	24536	ERROR	E:\netease\Server\src\tcp\tcp_connection.py:149	Client: ('', 8080)#('127.0.0.1', 51582)#1596608189.21 close !
+2020-08-05 14:21:11,131	24536	ERROR	E:\netease\Server\src\tcp\tcp_connection.py:149	Client: ('', 8080)#('127.0.0.1', 51608)#1596608306.31 close !
+2020-08-05 14:21:18,664	24536	INFO	E:\netease\Server\src\tcp\tcp_server.py:45	new conn('127.0.0.1', 51654)
+2020-08-05 14:21:19,964	24536	INFO	E:\netease\Server\src\tcp\tcp_server.py:45	new conn('127.0.0.1', 51657)
+2020-08-05 14:39:00,911	24536	ERROR	E:\netease\Server\src\tcp\tcp_connection.py:149	Client: ('', 8080)#('127.0.0.1', 51657)#1596608479.96 close !
+2020-08-05 14:39:01,687	24536	ERROR	E:\netease\Server\src\tcp\tcp_connection.py:149	Client: ('', 8080)#('127.0.0.1', 51654)#1596608478.66 close !
+2020-08-05 14:39:09,769	24536	INFO	E:\netease\Server\src\tcp\tcp_server.py:45	new conn('127.0.0.1', 52022)
+2020-08-05 14:42:03,816	24536	INFO	E:\netease\Server\src\tcp\tcp_server.py:45	new conn('127.0.0.1', 52081)
+2020-08-05 14:44:19,790	24536	ERROR	E:\netease\Server\src\tcp\tcp_connection.py:149	Client: ('', 8080)#('127.0.0.1', 52022)#1596609549.77 close !
+2020-08-05 14:55:27,391	24536	INFO	E:\netease\Server\src\tcp\tcp_server.py:45	new conn('127.0.0.1', 52417)
+2020-08-05 14:56:06,421	24536	ERROR	E:\netease\Server\src\tcp\tcp_connection.py:149	Client: ('', 8080)#('127.0.0.1', 52417)#1596610527.39 close !
+2020-08-05 14:57:22,483	24536	ERROR	E:\netease\Server\src\tcp\tcp_connection.py:149	Client: ('', 8080)#('127.0.0.1', 52081)#1596609723.82 close !
+2020-08-05 14:58:56,604	24536	INFO	E:\netease\Server\src\tcp\tcp_server.py:45	new conn('127.0.0.1', 52487)
+2020-08-05 14:59:43,973	24536	ERROR	E:\netease\Server\src\tcp\tcp_connection.py:149	Client: ('', 8080)#('127.0.0.1', 52487)#1596610736.6 close !
+2020-08-05 15:00:43,240	24536	INFO	E:\netease\Server\src\tcp\tcp_server.py:45	new conn('127.0.0.1', 52514)
+2020-08-05 15:01:20,575	24536	ERROR	E:\netease\Server\src\tcp\tcp_connection.py:149	Client: ('', 8080)#('127.0.0.1', 52514)#1596610843.24 close !
+2020-08-05 15:02:57,229	24536	INFO	E:\netease\Server\src\tcp\tcp_server.py:45	new conn('127.0.0.1', 52593)
+2020-08-05 15:04:28,868	24536	ERROR	E:\netease\Server\src\tcp\tcp_connection.py:149	Client: ('', 8080)#('127.0.0.1', 52593)#1596610977.23 close !
+2020-08-05 15:18:03,036	24536	INFO	E:\netease\Server\src\tcp\tcp_server.py:45	new conn('127.0.0.1', 53472)
+2020-08-05 15:18:30,325	24536	ERROR	E:\netease\Server\src\tcp\tcp_connection.py:149	Client: ('', 8080)#('127.0.0.1', 53472)#1596611883.04 close !
+2020-08-05 15:19:42,262	24536	INFO	E:\netease\Server\src\tcp\tcp_server.py:45	new conn('127.0.0.1', 53629)
+2020-08-05 15:20:11,828	24536	ERROR	E:\netease\Server\src\tcp\tcp_connection.py:149	Client: ('', 8080)#('127.0.0.1', 53629)#1596611982.26 close !
+2020-08-05 15:21:34,460	24536	INFO	E:\netease\Server\src\tcp\tcp_server.py:45	new conn('127.0.0.1', 53772)
+2020-08-05 15:21:52,839	24536	ERROR	E:\netease\Server\src\tcp\tcp_connection.py:149	Client: ('', 8080)#('127.0.0.1', 53772)#1596612094.46 close !
+2020-08-05 15:22:42,392	24536	INFO	E:\netease\Server\src\tcp\tcp_server.py:45	new conn('127.0.0.1', 53860)
+2020-08-05 15:23:31,709	24536	INFO	E:\netease\Server\src\tcp\tcp_server.py:45	new conn('127.0.0.1', 53882)
+2020-08-05 15:23:57,861	24536	ERROR	E:\netease\Server\src\tcp\tcp_connection.py:149	Client: ('', 8080)#('127.0.0.1', 53860)#1596612162.39 close !
+2020-08-05 15:24:55,953	26984	INFO	E:\netease\Server\src\net\socket_warp.py:50	Listen:('', 8080)successful !
+2020-08-05 15:25:06,345	26984	INFO	E:\netease\Server\src\tcp\tcp_server.py:45	new conn('127.0.0.1', 53914)
+2020-08-05 15:25:10,937	26984	INFO	E:\netease\Server\src\tcp\tcp_server.py:45	new conn('127.0.0.1', 53918)
+2020-08-05 15:29:46,164	26984	ERROR	E:\netease\Server\src\tcp\tcp_connection.py:149	Client: ('', 8080)#('127.0.0.1', 53914)#1596612306.35 close !
+2020-08-05 15:29:48,615	26984	ERROR	E:\netease\Server\src\tcp\tcp_connection.py:149	Client: ('', 8080)#('127.0.0.1', 53918)#1596612310.94 close !
+2020-08-05 15:32:12,559	26984	INFO	E:\netease\Server\src\tcp\tcp_server.py:45	new conn('127.0.0.1', 54261)
+2020-08-05 15:32:20,674	26984	INFO	E:\netease\Server\src\tcp\tcp_server.py:45	new conn('127.0.0.1', 54267)
+2020-08-05 15:36:29,744	26984	INFO	E:\netease\Server\src\tcp\tcp_server.py:45	new conn('127.0.0.1', 54333)
+2020-08-05 15:36:46,428	26984	ERROR	E:\netease\Server\src\tcp\tcp_connection.py:149	Client: ('', 8080)#('127.0.0.1', 54333)#1596612989.74 close !
+2020-08-05 15:40:39,667	26984	ERROR	E:\netease\Server\src\tcp\tcp_connection.py:149	Client: ('', 8080)#('127.0.0.1', 54261)#1596612732.56 close !
+2020-08-05 15:40:40,742	26984	ERROR	E:\netease\Server\src\tcp\tcp_connection.py:149	Client: ('', 8080)#('127.0.0.1', 54267)#1596612740.67 close !
+2020-08-05 15:42:17,861	26984	INFO	E:\netease\Server\src\tcp\tcp_server.py:45	new conn('127.0.0.1', 54713)
+2020-08-05 15:42:27,029	26984	ERROR	E:\netease\Server\src\tcp\tcp_connection.py:149	Client: ('', 8080)#('127.0.0.1', 54713)#1596613337.86 close !
+2020-08-05 15:42:28,265	26984	INFO	E:\netease\Server\src\tcp\tcp_server.py:45	new conn('127.0.0.1', 54720)
+2020-08-05 15:48:28,621	26984	INFO	E:\netease\Server\src\tcp\tcp_server.py:45	new conn('127.0.0.1', 54905)
+2020-08-05 15:48:32,621	26984	ERROR	E:\netease\Server\src\tcp\tcp_connection.py:149	Client: ('', 8080)#('127.0.0.1', 54720)#1596613348.27 close !
+2020-08-05 15:48:32,737	26984	INFO	E:\netease\Server\src\tcp\tcp_server.py:45	new conn('127.0.0.1', 54908)
