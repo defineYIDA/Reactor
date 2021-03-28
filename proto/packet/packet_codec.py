@@ -2,8 +2,8 @@
 
 import cPickle
 import struct
-from src.proto.codec import Codec
-from src.proto.protocol import Protocol
+from proto.codec import Codec
+from proto.protocol import Protocol
 
 
 class PacketCodec(Codec, Protocol):

@@ -1,7 +1,9 @@
 # encoding=utf8
+import sys,os
+sys.path.append(os.path.realpath('.'))
 from src.util.buffer import Buffer
-from src.proto.packet.packet_codec import PacketCodec
-from src.proto.packet.message_packet import MessagePacket
+from proto.packet.packet_codec import PacketCodec
+from proto.packet.message_packet import MessagePacket
 
 
 def _test(b, en):

@@ -1,5 +1,5 @@
 # encoding=utf8
-from src.proto.msg.msg import Msg
+from proto.msg.msg import Msg
 
 
 class ReqMsg(Msg):
@@ -11,11 +11,11 @@ class ReqMsg(Msg):
         return 1
 
 
-if __name__ == '__main__':
+def run_test():
     import struct
     import json
     from src.util.buffer import Buffer
-    from src.proto.msg.msg_codec import MsgCodec
+    from proto.msg.msg_codec import MsgCodec
 
     msg = ReqMsg({
         "data": [1, 2, 3],

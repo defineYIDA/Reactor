@@ -1,7 +1,7 @@
 #encoding=utf8
-from src.proto.msg.msg_base import Msg
+from proto.msg.msg_base import Msg
 from src.tcp.tcp_server import TcpServer
-from src.proto.msg.msg_handler import MsgInboundHandler
+from proto.msg.msg_handler import MsgInboundHandler
 
 class ServerTest(TcpServer):
 
@@ -9,19 +9,19 @@ class ServerTest(TcpServer):
         super(ServerTest, self).__init__(('', 8080), time_out=1)
 
     def init_pipeline(self, pipe):
-        from src.proto.length_field_splitter import LengthFieldSplitter
+        from proto.length_field_splitter import LengthFieldSplitter
         pipe.add_last(LengthFieldSplitter(12, 4))
-        from src.proto.msg.msg_codec_handler import MsgEncodeHandler, MsgDecodeHandler
+        from proto.msg.msg_codec_handler import MsgEncodeHandler, MsgDecodeHandler
         pipe.add_last(MsgDecodeHandler())
         pipe.add_last(EchoHandler())
-        from src.proto.msg.msg_heart_beat_handler import MsgHeartBeatHandler
+        from proto.msg.msg_heart_beat_handler import MsgHeartBeatHandler
         pipe.add_last(MsgHeartBeatHandler())
         pipe.add_last(MsgEncodeHandler())
-        from src.proto.msg.msg_codec import MsgCodec
+        from proto.msg.msg_codec import MsgCodec
         pipe.set_proto_codec(MsgCodec())
 
     def send_heartbeat(self, conn):
-        from src.proto.msg.heart_beat_msg import HeartBeatMsg
+        from proto.msg.heart_beat_msg import HeartBeatMsg
         conn.ctx.direct_send(HeartBeatMsg())
 
 

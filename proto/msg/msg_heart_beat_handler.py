@@ -1,5 +1,5 @@
 #encoding=utf8
-from src.proto.msg.msg_handler import MsgInboundHandler
+from proto.msg.msg_handler import MsgInboundHandler
 
 class MsgHeartBeatHandler(MsgInboundHandler):
 

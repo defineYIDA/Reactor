@@ -1,6 +1,6 @@
 # encoding=utf8
 
-from msg import Msg
+from proto.msg.msg import Msg
 
 
 class MsgBase(Msg):

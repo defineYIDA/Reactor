@@ -82,7 +82,7 @@ class Pipeline(object):
 
     def set_proto_codec(self, codec):
         """"设置协议编解码器"""
-        from src.proto.codec import Codec
+        from proto.codec import Codec
         if not isinstance(codec, Codec):
             return
         self.codec = codec

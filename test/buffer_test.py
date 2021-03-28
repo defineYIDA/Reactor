@@ -1,7 +1,7 @@
 # encoding=utf8
 from cStringIO import StringIO
 
-if __name__ == '__main__':
+def run_test():
     buffer = StringIO()
     buffer.write("12345678910")
     print buffer.tell()

@@ -2,9 +2,9 @@
 
 import json
 import struct
-from src.proto.codec import Codec
-from src.proto.protocol import Protocol
-from src.proto.msg.msg_base import MsgBase
+from proto.codec import Codec
+from proto.protocol import Protocol
+from proto.msg.msg_base import MsgBase
 
 
 class MsgCodec(Codec, Protocol):

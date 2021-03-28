@@ -1,5 +1,5 @@
 # encoding=utf8
-from src.proto.msg.msg_codec import MsgCodec
+from proto.msg.msg_codec import MsgCodec
 from src.pipeline.pipeline_handler import InboundHandler, OutboundHandler
 
 class MsgDecodeHandler(InboundHandler):

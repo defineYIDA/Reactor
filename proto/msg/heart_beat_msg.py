@@ -1,7 +1,7 @@
 # encoding=utf8
 
-from msg import Msg
-from command import Command
+from proto.msg.msg import Msg
+from proto.msg.command import Command
 
 
 class HeartBeatMsg(Msg):

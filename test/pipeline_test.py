@@ -1,8 +1,8 @@
 # encoding=utf8
 from src.pipeline.pipeline import Pipeline
 from src.pipeline.channel_context import ChannelContext
-from src.proto.msg.msg_handler import MsgInboundHandler, MsgOutboundHandler
-from src.proto.msg.msg import Msg
+from proto.msg.msg_handler import MsgInboundHandler, MsgOutboundHandler
+from proto.msg.msg import Msg
 
 
 class TempObj(object):

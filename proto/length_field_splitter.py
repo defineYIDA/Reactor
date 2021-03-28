@@ -1,6 +1,6 @@
 # encoding=utf8
 from src.pipeline.pipeline_handler import Splitter
-from src.proto.protocol import Protocol
+from proto.protocol import Protocol
 
 
 class LengthFieldSplitter(Splitter):
