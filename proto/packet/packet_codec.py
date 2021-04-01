@@ -2,11 +2,11 @@
 
 import cPickle
 import struct
-from proto.codec import Codec
-from proto.protocol import Protocol
+from src.proto.codec import Codec
+from proto.packet.packet import Packet
 
 
-class PacketCodec(Codec, Protocol):
+class PacketCodec(Codec):
     """
     自定义协议编解码器
     编解码方式：序列化
@@ -25,10 +25,6 @@ class PacketCodec(Codec, Protocol):
 
         self._header_len = struct.calcsize(self._header_fmt)  # 报文头部长度
 
-    @property
-    def version(self):
-        return 1
-
     def encode(self, packet):
         """
         自定义 packet 协议的编码
@@ -39,7 +35,7 @@ class PacketCodec(Codec, Protocol):
         """
         serialize_data = cPickle.dumps(packet)  # 序列化报文
 
-        data = struct.pack(self._header_fmt, Protocol.MAGIC_NUMBER,
+        data = struct.pack(self._header_fmt, Packet.MAGIC_NUMBER,
                            self.version,
                            packet.get_command(),
                            len(serialize_data))
@@ -55,7 +51,7 @@ class PacketCodec(Codec, Protocol):
 
         # print (magic, ver, command, data_len)
 
-        if magic != Protocol.MAGIC_NUMBER:
+        if magic != Packet.MAGIC_NUMBER:
             raise Exception("不支持当前客户端使用的消息协议")
 
         # version 提供可扩展性，后续添加其他的协议版本

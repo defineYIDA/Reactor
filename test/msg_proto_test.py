@@ -5,10 +5,7 @@ from proto.msg.msg import Msg
 class ReqMsg(Msg):
 
     def __init__(self, data):
-        self.data = data
-
-    def get_command(self):
-        return 1
+        super(ReqMsg, self).__init__(1, data)
 
 
 def run_test():

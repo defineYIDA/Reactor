@@ -138,6 +138,7 @@ class TcpConnection(object):
 
         self.channel.close()  # 将channel从poller中移除
         self.state = TcpConnectionState.DISCONNECTED
+        LOG.info('connection close. conn_key=' + self.conn_key)
 
     def set_close_callback(self, method):
         # connection_map中移除tcp_conn
@@ -145,5 +146,3 @@ class TcpConnection(object):
 
     def set_write_complete_callback(self, method):
         self.write_complete_callback = method
-
-

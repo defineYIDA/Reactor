@@ -1,6 +1,5 @@
 # encoding=utf8
 from src.pipeline.pipeline_handler import Splitter
-from proto.protocol import Protocol
 
 
 class LengthFieldSplitter(Splitter):
@@ -21,24 +20,23 @@ class LengthFieldSplitter(Splitter):
         self._magic_fmt = '!I'
         self._field_fmt = '!I'
 
+    def check(self, msg_buffer):
+        # check protocol available
+        return True
+
     def handle_read(self, ctx, msg_buffer):
         """
         校验是否到达一个完整协议包体
         :param ctx:
         :param msg_buffer:
-        :return:
+        :return: bool
         """
         import struct
 
+        if not self.check(ctx, msg_buffer):
+            return False
+
         buf_size = msg_buffer.size
-        if buf_size < Protocol.MAGIC_NUMBER_LEN:
-            return False
-
-        # 校验magic_number
-        (magic_number,) = struct.unpack(self._magic_fmt, msg_buffer.read(Protocol.MAGIC_NUMBER_LEN))
-        if magic_number != Protocol.MAGIC_NUMBER:
-            return False
-
         if buf_size < self._field_offset + self._field_length:
             return False
 

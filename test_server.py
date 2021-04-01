@@ -9,8 +9,8 @@ class ServerTest(TcpServer):
         super(ServerTest, self).__init__(('', 8080), time_out=1)
 
     def init_pipeline(self, pipe):
-        from proto.length_field_splitter import LengthFieldSplitter
-        pipe.add_last(LengthFieldSplitter(12, 4))
+        from proto.msg.msg_splitter import MsgSplitter
+        pipe.add_last(MsgSplitter())
         from proto.msg.msg_codec_handler import MsgEncodeHandler, MsgDecodeHandler
         pipe.add_last(MsgDecodeHandler())
         pipe.add_last(EchoHandler())
@@ -40,10 +40,7 @@ class EchoHandler(MsgInboundHandler):
 class ResMsg(Msg):
 
     def __init__(self, data):
-        self.data = data
-
-    def get_command(self):
-        return 1
+        super(ResMsg, self).__init__(1, data)
 
 
 if __name__ == '__main__':

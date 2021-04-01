@@ -79,12 +79,7 @@ class MsgOutboundHandler1(MsgOutboundHandler):
 
 class SimpleMsg(Msg):
     def __init__(self, command, data):
-        self.command = command
-        self.data = data
-    
-    def get_command(self):
-        return self.command
-
+        super(SimpleMsg, self).__init__(command, data)
 
 
 def test1():

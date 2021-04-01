@@ -2,9 +2,9 @@
 
 import json
 import struct
-from proto.codec import Codec
-from proto.protocol import Protocol
-from proto.msg.msg_base import MsgBase
+from src.proto.codec import Codec
+from proto.msg.msg import Msg
+from src.proto.protocol import Protocol
 
 
 class MsgCodec(Codec, Protocol):
@@ -16,9 +16,7 @@ class MsgCodec(Codec, Protocol):
     BYTES_ORDER = '!'  # 网络字节序
 
     def __init__(self):
-
-        self._packet_type_map = []  # 协议消息包的映射
-
+        # self._packet_type_map = []  # 协议消息包的映射
         self._serializer_map = []  # 序列化方式的映射
 
         # header ， 魔数 + 协议版本 + 指令 + 数据长度
@@ -40,7 +38,7 @@ class MsgCodec(Codec, Protocol):
         """
         json_data = json.dumps(msg.data)  # 序列化报文
 
-        data = struct.pack(self._header_fmt, Protocol.MAGIC_NUMBER,
+        data = struct.pack(self._header_fmt, Msg.MAGIC_NUMBER,
                            self.version,
                            msg.get_command(),
                            len(json_data))
@@ -56,7 +54,7 @@ class MsgCodec(Codec, Protocol):
 
         # print (magic, ver, command, data_len)
 
-        if magic != Protocol.MAGIC_NUMBER:
+        if magic != Msg.MAGIC_NUMBER:
             raise Exception("不支持当前客户端使用的消息协议")
 
         # version 提供可扩展性，后续添加其他的协议版本
@@ -70,12 +68,9 @@ class MsgCodec(Codec, Protocol):
 
         buffer.add_read_index(self._header_len)
 
-        # print packet.get_command()
-
         data = buffer.read(data_len).decode()
-        # print "data" + data
 
-        msg = MsgBase(command, json.loads(data))
+        msg = Msg(command, json.loads(data))
 
         buffer.add_read_index(data_len)  # 更改read指针
 
