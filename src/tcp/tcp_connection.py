@@ -134,10 +134,14 @@ class TcpConnection(object):
         self.socket.close()
 
         if self.close_callback:
-            self.close_callback(self)
+            self.close_callback(self.conn_key)
 
         self.channel.close()  # 将channel从poller中移除
+        self.channel = None
         self.state = TcpConnectionState.DISCONNECTED
+
+        self.write_complete_callback = None
+        self.close_callback = None
         LOG.info('connection close. conn_key=' + self.conn_key)
 
     def set_close_callback(self, method):
@@ -146,3 +150,6 @@ class TcpConnection(object):
 
     def set_write_complete_callback(self, method):
         self.write_complete_callback = method
+
+    def __del__(self):
+        print('tcpconnection del')

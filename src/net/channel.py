@@ -33,6 +33,10 @@ class Channel(object):
         移除当前channel从轮询器中
         """
         self._loop.remove_channel(self)
+        # 防止内存泄漏
+        self.read_callback = None
+        self.write_callback = None
+        self.error_callback = None
 
     def disable(self):
         """

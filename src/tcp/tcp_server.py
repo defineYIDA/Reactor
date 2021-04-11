@@ -60,8 +60,7 @@ class TcpServer(object):
         """初始化pipeline，消息处理管道"""
         raise NotImplementedError
 
-    def remove_connection(self, connection):
-        conn_key = connection.conn_key
+    def remove_connection(self, conn_key):
         if not self.conn_map.has_key(conn_key):
             return
         del self.conn_map[conn_key]
