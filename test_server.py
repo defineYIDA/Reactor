@@ -1,5 +1,5 @@
 #encoding=utf8
-from proto.msg.msg_base import Msg
+from proto.msg.msg import Msg
 from src.tcp.tcp_server import TcpServer
 from proto.msg.msg_handler import MsgInboundHandler
 
