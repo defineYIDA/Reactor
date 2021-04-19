@@ -59,12 +59,12 @@ class SelectPollerBase(PollerBase):
             # s = time.time()
             r_list, w_list, x_list = select.select(r_list, w_list, x_list, timeout)
 
-        except select.error, e:
+        except select.error as e:
             if e.args[0] == error.EINTR:
                 # 阻塞中断，因为会出现对wakeup的支持
                 return active_list
             else:
-                print e.message
+                print(e.message)
                 raise
         # print 'time:' + str(time.time() - s)
         for rfd in r_list:

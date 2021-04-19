@@ -1,5 +1,5 @@
 # encoding=utf8
-import loop_deco
+from src.util.loop_deco import RunInLoop
 
 
 class Timer(object):
@@ -71,12 +71,12 @@ class TimerQueue(object):
                     timer.execute_time = time.time() + timer.internal
                     self._heap.put(timer)
 
-    @loop_deco.RunInLoop
+    @RunInLoop
     def add_timer(self, timer):
         if timer:
             self._heap.put(timer)
 
-    @loop_deco.RunInLoop
+    @RunInLoop
     def remove_timer(self, timer_id):
         for timer in self._heap.queue:
             if timer.timer_id == timer_id:

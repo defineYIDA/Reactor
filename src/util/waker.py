@@ -47,7 +47,7 @@ class SocketWakerBase(WakerBase):
         Send a byte to my connection.
         """
         self.w.send('p')
-        print 'wake_up'
+        print('wake_up')
 
     def handle_read(self):
         self.r.recv(1)

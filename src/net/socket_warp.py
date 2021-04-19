@@ -28,7 +28,7 @@ class Socket(object):
     def close(self):
         try:
             self.sock.shutdown(socket.SHUT_RDWR)
-        except socket.error, e:
+        except socket.error as e:
             if e.args[0] in (error.ENOTCONN, error.EBADF):
                 # error.ENOTCONN: 关闭一个已经被关闭了的连接
                 # error.EBADF: 描述符失效
@@ -57,7 +57,7 @@ class ServerSocket(Socket):
         try:
             conn_socket, peer_host = self.sock.accept()
             return conn_socket, peer_host
-        except socket.error, e:
+        except socket.error as e:
             if e.args[0] in error.SHOULDCONTINUE:
                 return None, None
             elif e.args[0] == error.ECONNABORTED:
@@ -103,7 +103,7 @@ class ClientSocket(Socket):
             sent_count = self.sock.send(data)
             return sent_count, is_close
 
-        except socket.error, e:
+        except socket.error as e:
             if e.args[0] in error.SHOULDCONTINUE:
                 return 0, is_close
             elif e.args[0] in error.DISCONNECTED:
@@ -122,7 +122,7 @@ class ClientSocket(Socket):
             else:
                 is_close = True
                 return '', is_close
-        except socket.error, e:
+        except socket.error as e:
             if e.args[0] in error.SHOULDCONTINUE:
                 return '', is_close
             elif e.args[0] in error.DISCONNECTED:

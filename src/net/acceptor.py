@@ -1,7 +1,7 @@
 # encoding=utf8
 
-from channel import Channel
-from socket_warp import ServerSocket
+from src.net.channel import Channel
+from src.net.socket_warp import ServerSocket
 
 
 class Acceptor(object):

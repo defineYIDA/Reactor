@@ -1,5 +1,6 @@
 # encoding=utf8
-
+from src.net.channel import Channel
+from src.net.socket_warp import ClientSocket
 
 class ConnectorState(object):
     """
@@ -16,9 +17,6 @@ class Connector(object):
     """
 
     def __init__(self, loop):
-        from channel import Channel
-        from socket_warp import ClientSocket
-
         self._loop = loop
         self.socket = ClientSocket()
         self.conn_channel = Channel(loop, self.socket.fd)
