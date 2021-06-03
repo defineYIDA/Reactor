@@ -61,7 +61,7 @@ class TcpConnection(object):
             return
 
         if sent_count < len(data):
-            # 剩余为发送内容放入output_buffer
+            # 剩余未发送内容放入output_buffer
             self.output_buffer.append(data[sent_count:])
             self.channel.need_write = True
         elif sent_count == len(data) and self.write_complete_callback:
